@@ -5,13 +5,12 @@ This module implements the Page Object Model for the SauceDemo inventory page,
 providing methods for product browsing, cart operations, and inventory management.
 """
 
-from typing import List, Optional
+from typing import List
 
 import allure
 from playwright.sync_api import Page, expect
 
 from src.core.base_page import BasePage
-from src.core.reporting import AllureSteps
 from src.core.types import TestContext
 
 
@@ -24,7 +23,7 @@ class InventoryPage(BasePage):
     """
 
     # Main inventory elements
-    INVENTORY_CONTAINER = "#inventory_container"
+    INVENTORY_CONTAINER = "[data-test='inventory-container']"
     INVENTORY_LIST = ".inventory_list"
     INVENTORY_ITEMS = ".inventory_item"
 
@@ -82,7 +81,11 @@ class InventoryPage(BasePage):
 
         try:
             # Verify URL pattern
-            expect(self.page).to_have_url(f"**{self.url_pattern}")
+            import re
+
+            expect(self.page).to_have_url(
+                re.compile(rf".*{re.escape(self.url_pattern)}$")
+            )
 
             # Verify essential elements are visible
             expect(self.page.locator(self.APP_LOGO)).to_be_visible()

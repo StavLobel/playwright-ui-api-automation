@@ -11,7 +11,7 @@ import os
 import time
 import uuid
 from pathlib import Path
-from typing import Any, Dict, Generator
+from typing import Dict, Generator
 
 import pytest
 import yaml
@@ -137,7 +137,7 @@ def page(
         if (
             hasattr(test_context, "result")
             and test_context.result
-            and test_context.result.name == "FAILED"
+            and test_context.result == "FAILED"
         ):
             screenshot_path = (
                 f"test-results/screenshots/{test_context.correlation_id}_final.png"

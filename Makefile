@@ -17,41 +17,41 @@ help:
 
 # Install dependencies
 install:
-	pip install -r requirements.txt
+	source .venv/bin/activate && pip install -r requirements.txt
 
 # Setup development environment
 setup: install
-	pre-commit install
-	playwright install --with-deps
+	source .venv/bin/activate && pre-commit install
+	source .venv/bin/activate && playwright install --with-deps
 
 # Format code
 fmt:
-	black src tests
-	isort src tests
+	source .venv/bin/activate && black src tests
+	source .venv/bin/activate && isort src tests
 
 # Run linting
 lint:
-	flake8 src tests
+	source .venv/bin/activate && flake8 src tests
 
 # Run type checking
 type:
-	mypy src tests
+	source .venv/bin/activate && mypy src tests
 
 # Run UI tests only
 test-ui:
-	pytest -m ui --alluredir=allure-results
+	source .venv/bin/activate && python -m pytest tests/ui/ --alluredir=allure-results
 
 # Run API tests only
 test-api:
-	pytest -m api --alluredir=allure-results
+	source .venv/bin/activate && python -m pytest tests/api/ --alluredir=allure-results
 
 # Run all tests
 test-all:
-	pytest --alluredir=allure-results
+	source .venv/bin/activate && python -m pytest tests/ --alluredir=allure-results
 
 # Generate and serve Allure report
 allure:
-	allure generate allure-results -o allure-report --clean
+	source .venv/bin/activate && allure generate allure-results -o allure-report --clean
 	@echo "Report generated in allure-report/"
 	@echo "To serve report: allure serve allure-results"
 

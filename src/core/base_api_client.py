@@ -146,7 +146,10 @@ class BaseAPIClient:
             # Log response body at debug level
             if parsed_body is not None:
                 import json as json_module
-                self.logger.debug(f"Response body: {json_module.dumps(parsed_body, indent=2)}")
+
+                self.logger.debug(
+                    f"Response body: {json_module.dumps(parsed_body, indent=2)}"
+                )
             else:
                 self.logger.debug("Response body: None")
 

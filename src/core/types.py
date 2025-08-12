@@ -52,6 +52,8 @@ class TestContext:
     including correlation ID, test name, browser info, and other metadata.
     """
 
+    __test__ = False  # Tell pytest this is not a test class
+
     correlation_id: str
     test_name: str
     browser_name: Optional[str] = None

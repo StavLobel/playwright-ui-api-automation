@@ -11,7 +11,7 @@ import allure
 from playwright.sync_api import Page, expect
 
 from src.core.base_page import BasePage
-from src.core.reporting import AllureSteps
+
 from src.core.types import TestContext
 
 
@@ -81,7 +81,11 @@ class CartPage(BasePage):
 
         try:
             # Verify URL pattern
-            expect(self.page).to_have_url(f"**{self.url_pattern}")
+            import re
+
+            expect(self.page).to_have_url(
+                re.compile(rf".*{re.escape(self.url_pattern)}$")
+            )
 
             # Verify essential elements are visible
             expect(self.page.locator(self.CART_CONTAINER)).to_be_visible()

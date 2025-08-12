@@ -19,6 +19,37 @@ dependencies = [
     "types-requests>=2.31.0",
 ]
 
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = "test_*.py"
+python_classes = "Test*"
+python_functions = "test_*"
+pythonpath = ["src"]
+markers = [
+    "ui: UI tests using Playwright browser automation",
+    "api: API tests using Playwright's APIRequestContext",
+    "smoke: Quick smoke tests for core functionality",
+    "regression: Full regression test suite",
+    "slow: Tests that take longer to execute",
+]
+log_cli = true
+log_cli_level = "INFO"
+log_cli_format = "%(asctime)s [%(levelname)8s] %(name)s: %(message)s"
+log_cli_date_format = "%Y-%m-%d %H:%M:%S"
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+    "--alluredir=allure-results",
+    "--clean-alluredir",
+    "-v",
+    "--tb=short",
+]
+minversion = "7.0"
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    "ignore::PendingDeprecationWarning",
+]
+
 [project.optional-dependencies]
 dev = [
     "mypy>=1.5.0",
