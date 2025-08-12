@@ -1,0 +1,58 @@
+version: 1
+disable_existing_loggers: false
+
+formatters:
+  standard:
+    class: src.utils.logging_formatter.SafeFormatter
+    format: "%(asctime)s [%(levelname)8s] %(name)s [%(correlation_id)s]: %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+  
+  detailed:
+    class: src.utils.logging_formatter.SafeFormatter
+    format: "%(asctime)s [%(levelname)8s] %(name)s [%(correlation_id)s] %(filename)s:%(lineno)d: %(message)s"
+    datefmt: "%Y-%m-%d %H:%M:%S"
+
+  json:
+    class: pythonjsonlogger.jsonlogger.JsonFormatter
+    format: "%(asctime)s %(name)s %(levelname)s %(correlation_id)s %(filename)s %(lineno)d %(message)s"
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: INFO
+    formatter: standard
+    stream: ext://sys.stdout
+
+  file:
+    class: logging.FileHandler
+    level: DEBUG
+    formatter: detailed
+    filename: logs/automation.log
+    mode: a
+
+  file_json:
+    class: logging.FileHandler
+    level: DEBUG
+    formatter: json
+    filename: logs/automation.json
+    mode: a
+
+loggers:
+  src:
+    level: DEBUG
+    handlers: [console, file]
+    propagate: false
+  
+  tests:
+    level: DEBUG
+    handlers: [console, file]
+    propagate: false
+  
+  playwright:
+    level: INFO
+    handlers: [console, file]
+    propagate: false
+
+root:
+  level: DEBUG
+  handlers: [console, file]
