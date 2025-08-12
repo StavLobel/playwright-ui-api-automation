@@ -1,0 +1,2 @@
+# This file ensures that empty directories are tracked by Git
+# Git doesn't track empty directories, so this file serves as a placeholder
