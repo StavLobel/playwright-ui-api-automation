@@ -1,0 +1,20 @@
+---
+description: >
+  Architectural rules for the Playwright UI and API testing framework.
+globs:
+  - "**/*.py"
+alwaysApply: true
+---
+
+# Architecture and Design
+- Apply SOLID principles: SRP, OCP via abstractions, LSP, ISP, DIP.
+- Use Page Object Model (POM):
+  - All UI interactions go through BasePage.
+  - Implement abstract properties: url_pattern and page_title.
+  - Define locators as UPPER_SNAKE_CASE class constants.
+  - Methods perform one action each; do not place assertions in page objects.
+- API clients:
+  - Inherit from BaseAPIClient.
+  - One client class per endpoint group.
+  - Handle authentication, error handling, response parsing, retry, and timeouts.
+  - Use typed response models (dataclasses).

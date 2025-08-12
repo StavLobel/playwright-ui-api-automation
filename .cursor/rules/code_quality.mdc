@@ -1,0 +1,15 @@
+---
+description: >
+  Coding standards, type hints, documentation, and logging requirements.
+globs:
+  - "**/*.py"
+alwaysApply: true
+---
+
+# Code Quality
+- Type hints are mandatory for all public functions, methods, and class attributes.
+- Use typing primitives such as Optional, List, Dict, and Union.
+- Google-style docstrings for all public classes and methods with description, Args, Returns, Raises, and Examples when useful.
+- Inline comments to explain non-obvious design choices.
+- Structured logging via LoggerAdapter with correlation IDs.
+- Log start and end of each method, include timings and context.

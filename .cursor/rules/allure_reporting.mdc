@@ -1,0 +1,14 @@
+---
+description: >
+  Allure reporting integration rules.
+globs:
+  - "**/*.py"
+alwaysApply: true
+---
+
+# Allure Integration
+- Annotate key test actions with Allure steps.
+- Automatically attach screenshots on UI failures.
+- Attach API request and response bodies.
+- Include timing and correlation IDs in attachments and descriptions.
+- Capture browser console logs and videos for complex scenarios.

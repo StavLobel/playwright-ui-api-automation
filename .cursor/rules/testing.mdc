@@ -1,0 +1,16 @@
+---
+description: >
+  Test organization, data management, and assertion rules.
+globs:
+  - "**/tests/**/*.py"
+alwaysApply: true
+---
+
+# Testing Practices
+- Use pytest markers: @pytest.mark.ui, @pytest.mark.api, @pytest.mark.smoke.
+- Group related tests in classes prefixed with Test.
+- Test method names are descriptive.
+- Do not hardcode test data; store under testdata/ in YAML or JSON and load via data_loader.
+- Assertions include clear messages with expected vs actual values.
+- UI: use Playwright expect() where possible.
+- API: verify status codes, response structure, and payload content.

@@ -1,0 +1,28 @@
+---
+description: >
+  Rules for adding or modifying page objects, API clients, and tests.
+globs:
+  - "**/*.py"
+alwaysApply: true
+---
+
+# Maintenance
+- New page objects:
+  - Inherit from BasePage.
+  - Define locators as constants.
+  - Implement url_pattern and page_title.
+  - Add logging with correlation IDs, proper error handling, and screenshots.
+  - Provide complete type hints and docstrings.
+  - Add corresponding tests.
+- New API clients:
+  - Inherit from BaseAPIClient.
+  - Provide typed response models.
+  - Include authentication and error handling.
+  - Log requests and responses and implement retry logic.
+  - Add documentation and integration tests.
+- New tests:
+  - Use appropriate markers.
+  - Follow descriptive naming.
+  - Use fixtures for setup and teardown.
+  - Write clear assertions and Allure annotations.
+  - Ensure isolation and independence.
