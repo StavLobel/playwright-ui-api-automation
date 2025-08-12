@@ -1,0 +1,50 @@
+airportgap_api:
+  airports:
+    total_count: 30
+    required_airports:
+      - "Akureyri Airport"
+      - "St. Anthony Airport"
+      - "CFB Bagotville"
+    optional_fields:
+      - "iata"
+      - "icao"
+      - "name"
+      - "city"
+      - "country"
+      - "timezone"
+      - "latitude"
+      - "longitude"
+    
+  distance_calculations:
+    kix_to_nrt:
+      from_code: "KIX"
+      to_code: "NRT"
+      from_name: "Kansai International Airport"
+      to_name: "Narita International Airport"
+      min_distance_km: 400.0
+      max_distance_km: 2000.0
+      description: "Distance between major Japanese airports"
+    
+    lax_to_jfk:
+      from_code: "LAX"
+      to_code: "JFK"
+      from_name: "Los Angeles International Airport"
+      to_name: "John F. Kennedy International Airport"
+      min_distance_km: 3900.0
+      max_distance_km: 4200.0
+      description: "Cross-continental US distance"
+  
+  performance_expectations:
+    max_response_time_ms: 5000
+    max_list_response_time_ms: 3000
+    max_distance_calc_time_ms: 2000
+    
+  error_scenarios:
+    invalid_airport_code:
+      code: "XXX"
+      expected_status: 422
+      expected_error: "Invalid airport code"
+    
+    missing_distance_params:
+      expected_status: 400
+      expected_error: "Missing required parameters"

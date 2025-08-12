@@ -1,0 +1,28 @@
+saucedemo_users:
+  standard_user:
+    username: "standard_user"
+    password: "secret_sauce"
+    role: "standard"
+    expected_redirect: "/inventory.html"
+    description: "Standard user with full access to the application"
+  
+  locked_out_user:
+    username: "locked_out_user"
+    password: "secret_sauce"
+    role: "locked"
+    expected_error: "Epic sadface: Sorry, this user has been locked out."
+    description: "User that is locked out and cannot login"
+  
+  problem_user:
+    username: "problem_user"
+    password: "secret_sauce"
+    role: "problem"
+    expected_redirect: "/inventory.html"
+    description: "User that experiences problems with the application"
+  
+  performance_glitch_user:
+    username: "performance_glitch_user"
+    password: "secret_sauce"
+    role: "performance"
+    expected_redirect: "/inventory.html"
+    description: "User that experiences performance issues"
