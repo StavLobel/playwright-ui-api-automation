@@ -11,7 +11,6 @@ import allure
 from playwright.sync_api import Page, expect
 
 from src.core.base_page import BasePage
-
 from src.core.types import TestContext
 
 

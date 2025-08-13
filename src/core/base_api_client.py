@@ -6,7 +6,7 @@ APIRequestContext, providing reusable methods for HTTP requests, error handling,
 and response processing that are shared across all API client classes.
 """
 
-import json
+import json as json_module
 import logging
 import time
 from typing import Any, Dict, List, Optional, Union
@@ -46,19 +46,15 @@ class BaseAPIClient:
         self.request_context = request_context
         self.context = context
         self.settings = get_settings()
-        self.logger = logging.getLogger(
+        base_logger = logging.getLogger(
             f"{self.__class__.__module__}.{self.__class__.__name__}"
         )
 
         # Add correlation ID to logger context if available
-        if context:
-            self.logger = logging.LoggerAdapter(
-                self.logger, {"correlation_id": context.correlation_id}
-            )
-        else:
-            self.logger = logging.LoggerAdapter(
-                self.logger, {"correlation_id": "unknown"}
-            )
+        correlation_id = context.correlation_id if context else "unknown"
+        self.logger: Union[
+            logging.Logger, logging.LoggerAdapter[logging.Logger]
+        ] = logging.LoggerAdapter(base_logger, {"correlation_id": correlation_id})
 
     def _make_request(
         self,
@@ -144,14 +140,12 @@ class BaseAPIClient:
             )
 
             # Log response body at debug level
-            if parsed_body is not None:
-                import json as json_module
-
+            if parsed_body:
                 self.logger.debug(
                     f"Response body: {json_module.dumps(parsed_body, indent=2)}"
                 )
             else:
-                self.logger.debug("Response body: None")
+                self.logger.debug("Response body: None or empty")
 
             return api_response
 
@@ -218,7 +212,7 @@ class BaseAPIClient:
             Optional[Union[str, bytes]]: Prepared request body
         """
         if json_data is not None:
-            return json.dumps(json_data)
+            return json_module.dumps(json_data)
         return data
 
     def _execute_request(
@@ -283,9 +277,9 @@ class BaseAPIClient:
                 return ""
 
             # Try to parse as JSON
-            return json.loads(body_text)
+            return json_module.loads(body_text)  # type: ignore
 
-        except json.JSONDecodeError:
+        except json_module.JSONDecodeError:
             # Return as string if not valid JSON
             return response.text()
         except Exception as e:

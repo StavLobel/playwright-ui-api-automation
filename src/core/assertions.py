@@ -20,7 +20,12 @@ class AssertionHelper:
     automatic logging, and Allure step integration for better test reporting.
     """
 
-    def __init__(self, logger: Optional[logging.Logger] = None) -> None:
+    def __init__(
+        self,
+        logger: Optional[
+            Union[logging.Logger, logging.LoggerAdapter[logging.Logger]]
+        ] = None,
+    ) -> None:
         """
         Initialize the assertion helper.
 
@@ -303,7 +308,11 @@ class AssertionHelper:
 assertions = AssertionHelper()
 
 
-def get_assertion_helper(logger: Optional[logging.Logger] = None) -> AssertionHelper:
+def get_assertion_helper(
+    logger: Optional[
+        Union[logging.Logger, logging.LoggerAdapter[logging.Logger]]
+    ] = None,
+) -> AssertionHelper:
     """
     Get an assertion helper instance with optional logger.
 

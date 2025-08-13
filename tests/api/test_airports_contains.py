@@ -8,6 +8,8 @@ Test Case: TC-API-002
 Objective: Verify that specific airports (Akureyri, St. Anthony, CFB Bagotville) are present
 """
 
+from typing import Any, Dict
+
 import allure
 import pytest
 from playwright.sync_api import APIRequestContext
@@ -212,7 +214,7 @@ def test_required_airports_have_complete_information(
         validation_results = []
 
         for airport in required_airport_objects:
-            airport_validation = {
+            airport_validation: Dict[str, Any] = {
                 "name": airport.name,
                 "id": airport.id,
                 "has_attributes": bool(airport.attributes),
@@ -255,9 +257,11 @@ def test_required_airports_have_complete_information(
 
         for result in validation_results:
             # Allow some missing optional fields, but require basic information
+            missing_fields = result["missing_fields"]
+            assert isinstance(missing_fields, list), "missing_fields should be a list"
             critical_missing = [
                 field
-                for field in result["missing_fields"]
+                for field in missing_fields
                 if field in ["name", "id", "iata", "city", "country"]
             ]
 

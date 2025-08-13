@@ -9,7 +9,7 @@ that are shared across all page classes.
 import logging
 import time
 from abc import ABC, abstractmethod
-from typing import Optional
+from typing import Literal, Optional, Union
 
 from playwright.sync_api import Page, expect
 
@@ -43,13 +43,15 @@ class BasePage(ABC):
         self.page = page
         self.context = context
         self.settings = get_settings()
-        self.logger = logging.getLogger(
+        base_logger = logging.getLogger(
             f"{self.__class__.__module__}.{self.__class__.__name__}"
         )
 
         # Add correlation ID to logger context
-        self.logger = logging.LoggerAdapter(
-            self.logger, {"correlation_id": context.correlation_id}
+        self.logger: Union[
+            logging.Logger, logging.LoggerAdapter
+        ] = logging.LoggerAdapter(
+            base_logger, {"correlation_id": context.correlation_id}
         )
 
     @property
@@ -104,7 +106,10 @@ class BasePage(ABC):
             raise
 
     def wait_for_element(
-        self, locator: Locator, timeout: Optional[int] = None, state: str = "visible"
+        self,
+        locator: Locator,
+        timeout: Optional[int] = None,
+        state: Literal["attached", "detached", "hidden", "visible"] = "visible",
     ) -> None:
         """
         Wait for an element to reach the specified state.

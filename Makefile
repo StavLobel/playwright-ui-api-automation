@@ -62,6 +62,18 @@ allure:
 serve:
 	./scripts/serve-allure.sh
 
+# Debug CI quality checks locally (same as GitHub Actions)
+debug-ci-quality:
+	@echo "🔍 Running the same quality checks as GitHub Actions CI..."
+	@echo "📋 Step 1: Code formatting"
+	$(VENV_ACTIVATE) python -m black src tests
+	$(VENV_ACTIVATE) python -m isort src tests
+	@echo "📋 Step 2: Linting"
+	$(VENV_ACTIVATE) python -m flake8 src tests
+	@echo "📋 Step 3: Type checking"
+	$(VENV_ACTIVATE) python -m mypy src tests
+	@echo "✅ All quality checks passed locally!"
+
 # Clean temporary files
 clean:
 	rm -rf allure-results/ allure-report/ .pytest_cache/ .mypy_cache/

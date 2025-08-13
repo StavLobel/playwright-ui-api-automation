@@ -225,7 +225,13 @@ class AllureSteps:
     with automatic logging and error handling.
     """
 
-    def __init__(self, step_name: str, logger: Optional[logging.Logger] = None) -> None:
+    def __init__(
+        self,
+        step_name: str,
+        logger: Optional[
+            Union[logging.Logger, logging.LoggerAdapter[logging.Logger]]
+        ] = None,
+    ) -> None:
         """
         Initialize the Allure step context manager.
 
@@ -271,7 +277,12 @@ def get_allure_reporter(context: Optional[TestContext] = None) -> AllureReporter
     return AllureReporter(context)
 
 
-def allure_step(step_name: str, logger: Optional[logging.Logger] = None):
+def allure_step(
+    step_name: str,
+    logger: Optional[
+        Union[logging.Logger, logging.LoggerAdapter[logging.Logger]]
+    ] = None,
+):
     """
     Decorator for creating Allure steps with logging.
 

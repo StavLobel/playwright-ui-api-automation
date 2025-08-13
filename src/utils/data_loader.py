@@ -32,9 +32,9 @@ class DataLoader:
         """
         self.base_path = Path(base_path or "testdata")
         self.logger = logging.getLogger(__name__)
-        self._cache: Dict[str, TestData] = {}
+        self._cache: Dict[str, Any] = {}
 
-    def load_yaml(self, filename: str, use_cache: bool = True) -> TestData:
+    def load_yaml(self, filename: str, use_cache: bool = True) -> Any:
         """
         Load data from a YAML file.
 
@@ -85,7 +85,7 @@ class DataLoader:
             )
             raise
 
-    def load_json(self, filename: str, use_cache: bool = True) -> TestData:
+    def load_json(self, filename: str, use_cache: bool = True) -> Any:
         """
         Load data from a JSON file.
 
@@ -180,7 +180,7 @@ class DataLoader:
         api_data = self.load_yaml("api_expected")
 
         try:
-            return api_data[api_name]
+            return api_data[api_name]  # type: ignore
         except KeyError:
             available_apis = list(api_data.keys())
             self.logger.error(
@@ -195,7 +195,7 @@ class DataLoader:
         Returns:
             Dict[str, Any]: Expected airports data including count and required airports
         """
-        return self.get_api_expectations("airportgap_api")["airports"]
+        return self.get_api_expectations("airportgap_api")["airports"]  # type: ignore
 
     def get_expected_distance_data(self, route: str = "kix_to_nrt") -> Dict[str, Any]:
         """
@@ -207,9 +207,10 @@ class DataLoader:
         Returns:
             Dict[str, Any]: Expected distance data
         """
-        return self.get_api_expectations("airportgap_api")["distance_calculations"][
-            route
+        distance_data = self.get_api_expectations("airportgap_api")[
+            "distance_calculations"
         ]
+        return distance_data[route]  # type: ignore
 
     def clear_cache(self) -> None:
         """Clear the data cache."""
@@ -255,9 +256,9 @@ def load_test_data(filename: str, file_type: str = "yaml") -> TestData:
         TestData: Loaded data dictionary
     """
     if file_type.lower() == "json":
-        return data_loader.load_json(filename)
+        return data_loader.load_json(filename)  # type: ignore
     else:
-        return data_loader.load_yaml(filename)
+        return data_loader.load_yaml(filename)  # type: ignore
 
 
 def get_user_credentials(user_type: str = "standard_user") -> Dict[str, str]:

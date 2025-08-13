@@ -115,22 +115,22 @@ class Airport:
     @property
     def name(self) -> str:
         """Get the airport name from attributes."""
-        return self.attributes.get("name", "")
+        return self.attributes.get("name", "")  # type: ignore
 
     @property
     def city(self) -> str:
         """Get the airport city from attributes."""
-        return self.attributes.get("city", "")
+        return self.attributes.get("city", "")  # type: ignore
 
     @property
     def country(self) -> str:
         """Get the airport country from attributes."""
-        return self.attributes.get("country", "")
+        return self.attributes.get("country", "")  # type: ignore
 
     @property
     def iata_code(self) -> str:
         """Get the airport IATA code from attributes."""
-        return self.attributes.get("iata", "")
+        return self.attributes.get("iata", "")  # type: ignore
 
 
 @dataclass
