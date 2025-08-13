@@ -1,0 +1,17 @@
+{
+  "number_of_requests": 3,
+  "request_results": [
+    {
+      "request_number": 1,
+      "airport_count": 30
+    },
+    {
+      "request_number": 2,
+      "airport_count": 30
+    },
+    {
+      "request_number": 3,
+      "airport_count": 30
+    }
+  ]
+}
