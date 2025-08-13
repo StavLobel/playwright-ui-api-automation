@@ -185,8 +185,6 @@ def test_required_airports_have_complete_information(
         test_context: Test execution context
         allure_reporter: Allure reporter for enhanced reporting
     """
-    assertions = get_assertion_helper()
-
     with allure.step("Initialize AirportGap API client"):
         airports_client = AirportsClient(api_request_context, test_context)
 

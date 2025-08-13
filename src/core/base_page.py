@@ -9,7 +9,7 @@ that are shared across all page classes.
 import logging
 import time
 from abc import ABC, abstractmethod
-from typing import Any, List, Optional
+from typing import Optional
 
 from playwright.sync_api import Page, expect
 

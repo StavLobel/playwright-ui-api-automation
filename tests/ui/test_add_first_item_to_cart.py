@@ -125,10 +125,6 @@ def test_add_first_item_to_cart_updates_badge(
         )
 
     with allure.step("Verify 'Add to cart' button changed to 'Remove'"):
-        # Get the first inventory item and check button state
-        first_item = page.locator(inventory_page.INVENTORY_ITEMS).first
-        remove_button = first_item.locator(inventory_page.REMOVE_BUTTON)
-
         # Verify remove button is now visible
         try:
             page.wait_for_selector(

@@ -112,7 +112,7 @@ temp/
 *.sw?
 
 # Cursor project files
-.cursor/
+.cursor/rules/
 
 # Python
 __pycache__/
