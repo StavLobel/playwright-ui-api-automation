@@ -1,0 +1,1 @@
+{'from_airport': 'XXX', 'to_airport': 'KIX', 'error': 'Expected status code 200, got 422. Response: {\'errors\': [{\'status\': \'422\', \'title\': \'Unable to process request\', \'detail\': "Please enter valid \'from\' and \'to\' airports."}]}', 'error_type': 'AssertionError'}

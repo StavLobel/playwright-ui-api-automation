@@ -1,5 +1,0 @@
-[32mINFO    [0m test_execution:conftest.py:240 Starting test: tests/ui/test_inventory_list_count.py::test_inventory_items_have_complete_information[chromium] (setup)
-[32mINFO    [0m browser.console:conftest.py:121 [log] Content is cached for offline use.
-[32mINFO    [0m browser.console:conftest.py:121 [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
-[32mINFO    [0m browser.console:conftest.py:121 [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
-[32mINFO    [0m test_execution:conftest.py:251 Test completed: tests/ui/test_inventory_list_count.py::test_inventory_items_have_complete_information[chromium] (setup) (duration: 3.25s)

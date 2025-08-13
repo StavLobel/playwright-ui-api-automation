@@ -49,11 +49,15 @@ test-api:
 test-all:
 	source .venv/bin/activate && python -m pytest tests/ --alluredir=allure-results
 
-# Generate and serve Allure report
+# Generate Allure report
 allure:
-	source .venv/bin/activate && allure generate allure-results -o allure-report --clean
+	export PATH="/opt/homebrew/opt/openjdk@11/bin:$$PATH" && allure generate allure-results -o allure-report --clean
 	@echo "Report generated in allure-report/"
-	@echo "To serve report: allure serve allure-results"
+	@echo "To serve report: make serve or ./scripts/serve-allure.sh"
+
+# Serve Allure report locally
+serve:
+	./scripts/serve-allure.sh
 
 # Clean temporary files
 clean:
