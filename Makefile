@@ -15,39 +15,42 @@ help:
 	@echo "  clean       - Clean temporary files and reports"
 	@echo "  ci          - Run full CI pipeline (lint, type, test)"
 
+# Detect if we're in a virtual environment or if .venv exists
+VENV_ACTIVATE = $(shell if [ -f .venv/bin/activate ]; then echo ". .venv/bin/activate &&"; else echo ""; fi)
+
 # Install dependencies
 install:
-	source .venv/bin/activate && pip install -r requirements.txt
+	$(VENV_ACTIVATE) pip install -r requirements.txt
 
 # Setup development environment
 setup: install
-	source .venv/bin/activate && pre-commit install
-	source .venv/bin/activate && playwright install --with-deps
+	$(VENV_ACTIVATE) pre-commit install
+	$(VENV_ACTIVATE) playwright install --with-deps
 
 # Format code
 fmt:
-	source .venv/bin/activate && black src tests
-	source .venv/bin/activate && isort src tests
+	$(VENV_ACTIVATE) python -m black src tests
+	$(VENV_ACTIVATE) python -m isort src tests
 
 # Run linting
 lint:
-	source .venv/bin/activate && flake8 src tests
+	$(VENV_ACTIVATE) python -m flake8 src tests
 
 # Run type checking
 type:
-	source .venv/bin/activate && mypy src tests
+	$(VENV_ACTIVATE) python -m mypy src tests
 
 # Run UI tests only
 test-ui:
-	source .venv/bin/activate && python -m pytest tests/ui/ --alluredir=allure-results
+	$(VENV_ACTIVATE) python -m pytest tests/ui/ --alluredir=allure-results
 
 # Run API tests only
 test-api:
-	source .venv/bin/activate && python -m pytest tests/api/ --alluredir=allure-results
+	$(VENV_ACTIVATE) python -m pytest tests/api/ --alluredir=allure-results
 
 # Run all tests
 test-all:
-	source .venv/bin/activate && python -m pytest tests/ --alluredir=allure-results
+	$(VENV_ACTIVATE) python -m pytest tests/ --alluredir=allure-results
 
 # Generate Allure report
 allure:

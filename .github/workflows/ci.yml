@@ -66,6 +66,7 @@ jobs:
           make fmt
           make lint
           make type
+        shell: bash
 
       - name: Run Tests (${{ matrix.browser }})
         run: |
