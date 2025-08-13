@@ -1,0 +1,22 @@
+2025-08-13 18:44:13 [    INFO] test_execution [1695e2e2]: Starting test: tests/ui/test_add_first_item_to_cart.py::test_cart_badge_updates_with_multiple_items[chromium] (setup)
+2025-08-13 18:44:13 [    INFO] src.pages.login_page.LoginPage [1695e2e2]: Starting step: Navigate to SauceDemo login page
+2025-08-13 18:44:13 [    INFO] src.pages.login_page.LoginPage [1695e2e2]: Navigating to URL: https://www.saucedemo.com
+2025-08-13 18:44:13 [    INFO] browser.console [unknown]: [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+2025-08-13 18:44:13 [    INFO] browser.console [unknown]: [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+2025-08-13 18:44:13 [    INFO] browser.console [unknown]: [log] Content is cached for offline use.
+2025-08-13 18:44:13 [    INFO] src.pages.login_page.LoginPage [1695e2e2]: Navigation completed in 0.69s
+2025-08-13 18:44:13 [    INFO] src.pages.login_page.LoginPage [1695e2e2]: Login page loaded successfully
+2025-08-13 18:44:13 [    INFO] src.pages.login_page.LoginPage [1695e2e2]: Step completed: Navigate to SauceDemo login page
+2025-08-13 18:44:13 [    INFO] src.pages.login_page.LoginPage [1695e2e2]: Starting login process for user: standard_user
+2025-08-13 18:44:14 [    INFO] src.pages.login_page.LoginPage [1695e2e2]: Login successful for user: standard_user
+2025-08-13 18:44:14 [    INFO] src.pages.inventory_page.InventoryPage [1695e2e2]: Verifying inventory page is loaded
+2025-08-13 18:44:14 [    INFO] src.pages.inventory_page.InventoryPage [1695e2e2]: Inventory page verification successful
+2025-08-13 18:44:18 [    INFO] src.pages.inventory_page.InventoryPage [1695e2e2]: Adding first inventory item to cart
+2025-08-13 18:44:19 [    INFO] src.pages.inventory_page.InventoryPage [1695e2e2]: Successfully added 'Sauce Labs Backpack' to cart
+2025-08-13 18:44:19 [    INFO] src.pages.inventory_page.InventoryPage [1695e2e2]: Verifying cart badge count: 1
+2025-08-13 18:44:19 [    INFO] src.pages.inventory_page.InventoryPage [1695e2e2]: Cart badge verification successful - count: 1
+2025-08-13 18:44:19 [    INFO] src.pages.inventory_page.InventoryPage [1695e2e2]: Adding product to cart by name: Sauce Labs Bike Light
+2025-08-13 18:44:20 [    INFO] src.pages.inventory_page.InventoryPage [1695e2e2]: Successfully added 'Sauce Labs Bike Light' to cart
+2025-08-13 18:44:20 [    INFO] src.pages.inventory_page.InventoryPage [1695e2e2]: Verifying cart badge count: 2
+2025-08-13 18:44:20 [    INFO] src.pages.inventory_page.InventoryPage [1695e2e2]: Cart badge verification successful - count: 2
+2025-08-13 18:44:20 [    INFO] test_execution [1695e2e2]: Test completed: tests/ui/test_add_first_item_to_cart.py::test_cart_badge_updates_with_multiple_items[chromium] (setup) (duration: 7.29s)

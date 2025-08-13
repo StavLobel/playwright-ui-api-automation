@@ -1,0 +1,5 @@
+INFO     test_execution:conftest.py:240 Starting test: tests/ui/test_add_first_item_to_cart.py::test_add_first_item_to_cart_updates_badge[chromium] (setup)
+INFO     browser.console:conftest.py:121 [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+INFO     browser.console:conftest.py:121 [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+INFO     browser.console:conftest.py:121 [log] Content is cached for offline use.
+INFO     test_execution:conftest.py:251 Test completed: tests/ui/test_add_first_item_to_cart.py::test_add_first_item_to_cart_updates_badge[chromium] (setup) (duration: 6.40s)
