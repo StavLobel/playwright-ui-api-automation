@@ -9,6 +9,11 @@ on:
 env:
   PYTHON_VERSION: '3.11'
   NODE_VERSION: '18'
+  # Ensure GITHUB_TOKEN has write permissions for Pages deployment
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   test:

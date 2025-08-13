@@ -244,12 +244,13 @@ class BaseAPIClient:
         Returns:
             APIResponse: Playwright API response
         """
-        request_kwargs = {"timeout": timeout, "headers": headers}
+        # Playwright APIRequestContext expects specific types for kwargs
+        request_kwargs: Dict[str, Any] = {"timeout": timeout, "headers": headers}
 
-        if data:
+        if data is not None:
             request_kwargs["data"] = data
 
-        if params:
+        if params is not None:
             request_kwargs["params"] = params
 
         # Execute request based on method

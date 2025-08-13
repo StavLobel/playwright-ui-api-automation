@@ -19,7 +19,7 @@ from playwright.sync_api import APIRequestContext, Browser, BrowserContext, Page
 
 from src.config.settings import get_settings
 from src.core.reporting import get_allure_reporter
-from src.core.types import TestContext
+from src.core.types import TestContext, TestResult
 from src.utils.data_loader import get_user_credentials
 
 
@@ -136,8 +136,8 @@ def page(
         # Take screenshot on test failure
         if (
             hasattr(test_context, "result")
-            and test_context.result
-            and test_context.result == "FAILED"
+            and test_context.result is not None
+            and test_context.result == TestResult.FAILED
         ):
             screenshot_path = (
                 f"test-results/screenshots/{test_context.correlation_id}_final.png"
@@ -268,9 +268,9 @@ def pytest_runtest_makereport(item, call):
 
             # Set test result
             if call.excinfo is None:
-                test_context.result = "PASSED"
+                test_context.result = TestResult.PASSED
             else:
-                test_context.result = "FAILED"
+                test_context.result = TestResult.FAILED
                 test_context.error_message = (
                     str(call.excinfo.value) if call.excinfo else None
                 )

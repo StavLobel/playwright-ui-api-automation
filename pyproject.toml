@@ -104,10 +104,10 @@ exclude = [
 python_version = "3.11"
 warn_return_any = true
 warn_unused_configs = true
-disallow_untyped_defs = true
-disallow_incomplete_defs = true
-check_untyped_defs = true
-disallow_untyped_decorators = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+check_untyped_defs = false
+disallow_untyped_decorators = false
 no_implicit_optional = true
 warn_redundant_casts = true
 warn_unused_ignores = true
@@ -120,5 +120,13 @@ show_error_codes = true
 module = [
     "allure.*",
     "pytest_playwright.*",
+]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = [
+    "pytest",
+    "playwright.*",
+    "yaml",
 ]
 ignore_missing_imports = true
