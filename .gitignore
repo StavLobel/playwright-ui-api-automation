@@ -113,6 +113,7 @@ temp/
 
 # Cursor project files
 .cursor/rules/
+*.mdc
 
 # Python
 __pycache__/
