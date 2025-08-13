@@ -1,0 +1,7 @@
+2025-08-13 18:52:57 [    INFO] test_execution [0f32c714]: Starting test: tests/api/test_airports_contains.py::test_airport_names_case_sensitivity (setup)
+2025-08-13 18:52:57 [    INFO] src.api.airports_client.AirportsClient [0f32c714]: Getting list of airport names
+2025-08-13 18:52:57 [    INFO] src.api.airports_client.AirportsClient [0f32c714]: Fetching all airports from AirportGap API
+2025-08-13 18:52:57 [    INFO] src.api.airports_client.AirportsClient [0f32c714]: Making GET request to https://airportgap.com/api/airports
+2025-08-13 18:52:57 [    INFO] src.api.airports_client.AirportsClient [0f32c714]: Request completed: GET https://airportgap.com/api/airports
+2025-08-13 18:52:57 [    INFO] src.api.airports_client.AirportsClient [0f32c714]: Successfully retrieved 30 airports
+2025-08-13 18:52:57 [    INFO] test_execution [0f32c714]: Test completed: tests/api/test_airports_contains.py::test_airport_names_case_sensitivity (setup) (duration: 0.09s)

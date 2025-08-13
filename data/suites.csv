@@ -1,48 +1,25 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
 "
-This test verifies that adding the first inventory item to the shopping cart
-correctly updates the cart badge to display ""1"", indicating one item in cart.
+This test verifies that the SauceDemo inventory page correctly displays
+exactly 6 products after a successful user login. This is a critical
+validation of the core inventory display functionality.
 
 Steps:
-1. Navigate to SauceDemo and complete login
-2. Locate the first product item in the inventory
-3. Click the ""Add to cart"" button for the first item
-4. Verify button text changes to ""Remove""
-5. Check the shopping cart badge in the header
-6. Verify cart badge displays ""1""
+1. Navigate to SauceDemo login page
+2. Login with standard user credentials
+3. Wait for inventory page to load
+4. Count the number of inventory items displayed
+5. Verify exactly 6 items are present
 
 Expected Result:
-- First product is successfully added to cart
-- ""Add to cart"" button changes to ""Remove""
-- Shopping cart badge appears with count ""1""
-- Cart icon is highlighted/updated to show active state
-","6796","Verify adding first item to cart updates badge to '1'","tests.ui","Wed Aug 13 18:48:49 UTC 2025","passed","Wed Aug 13 18:48:55 UTC 2025","","test_add_first_item_to_cart","",""
+- Login is successful and redirects to inventory page
+- Inventory page displays exactly 6 product items
+- All items have proper product information
+","2609","Verify inventory displays exactly 6 items after login","tests.ui","Wed Aug 13 18:53:19 UTC 2025","passed","Wed Aug 13 18:53:21 UTC 2025","","test_inventory_list_count","",""
 "
-This test verifies that the required airports not only exist but also
-have complete and valid information in their attributes.
-","26","Verify required airports have complete information","tests.api","Wed Aug 13 18:49:03 UTC 2025","passed","Wed Aug 13 18:49:03 UTC 2025","","test_airports_contains","",""
-"
-This test verifies that after adding an item to cart, the item correctly
-appears in the cart page when navigating to the cart.
-","1218","Verify added item appears in cart page","tests.ui","Wed Aug 13 18:48:58 UTC 2025","passed","Wed Aug 13 18:48:59 UTC 2025","","test_add_first_item_to_cart","",""
-"
-This test verifies that adding the first inventory item to the shopping cart
-correctly updates the cart badge to display ""1"", indicating one item in cart.
-
-Steps:
-1. Navigate to SauceDemo and complete login
-2. Locate the first product item in the inventory
-3. Click the ""Add to cart"" button for the first item
-4. Verify button text changes to ""Remove""
-5. Check the shopping cart badge in the header
-6. Verify cart badge displays ""1""
-
-Expected Result:
-- First product is successfully added to cart
-- ""Add to cart"" button changes to ""Remove""
-- Shopping cart badge appears with count ""1""
-- Cart icon is highlighted/updated to show active state
-","6996","Verify adding first item to cart updates badge to '1'","tests.ui","Wed Aug 13 18:49:04 UTC 2025","passed","Wed Aug 13 18:49:11 UTC 2025","","test_add_first_item_to_cart","",""
+This test verifies that the cart badge correctly updates when adding
+multiple items to the cart, showing the accurate count.
+","5374","Verify cart badge updates when adding multiple items","tests.ui","Wed Aug 13 18:53:13 UTC 2025","passed","Wed Aug 13 18:53:19 UTC 2025","","test_add_first_item_to_cart","",""
 "
 This test verifies that specific airports (Akureyri, St. Anthony, CFB Bagotville)
 are present in the AirportGap API response.
@@ -60,11 +37,61 @@ Expected Result:
 - All three specified airports are found in the response
 - Airport names match exactly (case-sensitive)
 - Each airport has complete attribute information
-","118","Verify specific airports are present in API response","tests.api","Wed Aug 13 18:49:03 UTC 2025","passed","Wed Aug 13 18:49:03 UTC 2025","","test_airports_contains","",""
+","359","Verify specific airports are present in API response","tests.api","Wed Aug 13 18:52:57 UTC 2025","passed","Wed Aug 13 18:52:57 UTC 2025","","test_airports_contains","",""
+"
+This test verifies that the cart badge correctly updates when adding
+multiple items to the cart, showing the accurate count.
+","5415","Verify cart badge updates when adding multiple items","tests.ui","Wed Aug 13 18:52:36 UTC 2025","passed","Wed Aug 13 18:52:41 UTC 2025","","test_add_first_item_to_cart","",""
+"
+This test verifies that the cart badge correctly updates when adding
+multiple items to the cart, showing the accurate count.
+","0","Verify cart badge updates when adding multiple items","tests.ui","Wed Aug 13 18:54:46 UTC 2025","broken","Wed Aug 13 18:54:46 UTC 2025","","test_add_first_item_to_cart","",""
+"
+This test verifies that all inventory items display complete information
+including name, description, price, and image after login.
+
+This is an extended validation that ensures data quality beyond just count.
+","134","Verify inventory items have complete information","tests.ui","Wed Aug 13 18:53:24 UTC 2025","passed","Wed Aug 13 18:53:24 UTC 2025","","test_inventory_list_count","",""
+"
+This test verifies that after adding an item to cart, the item correctly
+appears in the cart page when navigating to the cart.
+","0","Verify added item appears in cart page","tests.ui","Wed Aug 13 18:54:09 UTC 2025","broken","Wed Aug 13 18:54:09 UTC 2025","","test_add_first_item_to_cart","",""
+"
+This test verifies that airport name matching is case-sensitive
+and that the exact airport names are returned as expected.
+","93","Verify airport search is case sensitive","tests.api","Wed Aug 13 18:52:57 UTC 2025","passed","Wed Aug 13 18:52:57 UTC 2025","","test_airports_contains","",""
+"
+This test verifies that all inventory items display complete information
+including name, description, price, and image after login.
+
+This is an extended validation that ensures data quality beyond just count.
+","101","Verify inventory items have complete information","tests.ui","Wed Aug 13 18:52:45 UTC 2025","passed","Wed Aug 13 18:52:45 UTC 2025","","test_inventory_list_count","",""
+"
+This test verifies that adding the first inventory item to the shopping cart
+correctly updates the cart badge to display ""1"", indicating one item in cart.
+
+Steps:
+1. Navigate to SauceDemo and complete login
+2. Locate the first product item in the inventory
+3. Click the ""Add to cart"" button for the first item
+4. Verify button text changes to ""Remove""
+5. Check the shopping cart badge in the header
+6. Verify cart badge displays ""1""
+
+Expected Result:
+- First product is successfully added to cart
+- ""Add to cart"" button changes to ""Remove""
+- Shopping cart badge appears with count ""1""
+- Cart icon is highlighted/updated to show active state
+","60010","Verify adding first item to cart updates badge to '1'","tests.ui","Wed Aug 13 18:52:39 UTC 2025","broken","Wed Aug 13 18:53:39 UTC 2025","","test_add_first_item_to_cart","",""
 "
 This test verifies that the distance calculation API properly handles
 invalid airport codes and returns appropriate error responses.
-","15","Verify distance API handles invalid airport codes gracefully","tests.api","Wed Aug 13 18:49:03 UTC 2025","passed","Wed Aug 13 18:49:03 UTC 2025","","test_distance_kix_nrt","",""
+","82","Verify distance API handles invalid airport codes gracefully","tests.api","Wed Aug 13 18:52:58 UTC 2025","passed","Wed Aug 13 18:52:58 UTC 2025","","test_distance_kix_nrt","",""
+"
+This test verifies that the distance calculation API responds within
+acceptable time limits for good user experience.
+","86","Verify distance calculation API performance","tests.api","Wed Aug 13 18:52:58 UTC 2025","passed","Wed Aug 13 18:52:58 UTC 2025","","test_distance_kix_nrt","",""
 "
 This test verifies that the distance between KIX (Kansai International Airport)
 and NRT (Narita International Airport) is greater than 400 kilometers.
@@ -83,43 +110,23 @@ Expected Result:
 - Response contains distance calculation data
 - Distance between KIX and NRT is > 400 kilometers
 - Response includes distance in multiple units (km, miles, nautical miles)
-","18","Verify distance between KIX and NRT exceeds 400 km","tests.api","Wed Aug 13 18:49:03 UTC 2025","passed","Wed Aug 13 18:49:03 UTC 2025","","test_distance_kix_nrt","",""
-"
-This test verifies that all inventory items display complete information
-including name, description, price, and image after login.
-
-This is an extended validation that ensures data quality beyond just count.
-","135","Verify inventory items have complete information","tests.ui","Wed Aug 13 18:49:28 UTC 2025","passed","Wed Aug 13 18:49:28 UTC 2025","","test_inventory_list_count","",""
-"
-This test verifies that the cart badge correctly updates when adding
-multiple items to the cart, showing the accurate count.
-","5321","Verify cart badge updates when adding multiple items","tests.ui","Wed Aug 13 18:49:18 UTC 2025","passed","Wed Aug 13 18:49:23 UTC 2025","","test_add_first_item_to_cart","",""
-"
-This test verifies that the airport count remains consistent across
-multiple API requests, ensuring data stability and reliability.
-","72","Verify airport count consistency across multiple requests","tests.api","Wed Aug 13 18:49:03 UTC 2025","passed","Wed Aug 13 18:49:03 UTC 2025","","test_airports_count","",""
-"
-This test verifies that the distance calculation API responds within
-acceptable time limits for good user experience.
-","16","Verify distance calculation API performance","tests.api","Wed Aug 13 18:49:03 UTC 2025","passed","Wed Aug 13 18:49:03 UTC 2025","","test_distance_kix_nrt","",""
-"
-This test verifies that the cart badge correctly updates when adding
-multiple items to the cart, showing the accurate count.
-","5400","Verify cart badge updates when adding multiple items","tests.ui","Wed Aug 13 18:49:01 UTC 2025","passed","Wed Aug 13 18:49:07 UTC 2025","","test_add_first_item_to_cart","",""
-"
-This test verifies that after adding an item to cart, the item correctly
-appears in the cart page when navigating to the cart.
-","1254","Verify added item appears in cart page","tests.ui","Wed Aug 13 18:49:14 UTC 2025","passed","Wed Aug 13 18:49:15 UTC 2025","","test_add_first_item_to_cart","",""
+","86","Verify distance between KIX and NRT exceeds 400 km","tests.api","Wed Aug 13 18:52:58 UTC 2025","passed","Wed Aug 13 18:52:58 UTC 2025","","test_distance_kix_nrt","",""
 "
 This test verifies that the distance calculation returns the same result
 regardless of the direction (KIX to NRT vs NRT to KIX).
-","31","Verify distance is same in both directions","tests.api","Wed Aug 13 18:49:03 UTC 2025","passed","Wed Aug 13 18:49:03 UTC 2025","","test_distance_kix_nrt","",""
+","167","Verify distance is same in both directions","tests.api","Wed Aug 13 18:52:58 UTC 2025","passed","Wed Aug 13 18:52:58 UTC 2025","","test_distance_kix_nrt","",""
 "
-This test verifies that all inventory items display complete information
-including name, description, price, and image after login.
-
-This is an extended validation that ensures data quality beyond just count.
-","102","Verify inventory items have complete information","tests.ui","Wed Aug 13 18:49:29 UTC 2025","passed","Wed Aug 13 18:49:29 UTC 2025","","test_inventory_list_count","",""
+This test verifies that after adding an item to cart, the item correctly
+appears in the cart page when navigating to the cart.
+","1232","Verify added item appears in cart page","tests.ui","Wed Aug 13 18:52:33 UTC 2025","passed","Wed Aug 13 18:52:34 UTC 2025","","test_add_first_item_to_cart","",""
+"
+This test verifies that the airport count remains consistent across
+multiple API requests, ensuring data stability and reliability.
+","274","Verify airport count consistency across multiple requests","tests.api","Wed Aug 13 18:52:57 UTC 2025","passed","Wed Aug 13 18:52:58 UTC 2025","","test_airports_count","",""
+"
+This test verifies that the airport API responds within acceptable
+time limits to ensure good user experience.
+","92","Verify airport API response time performance","tests.api","Wed Aug 13 18:52:58 UTC 2025","passed","Wed Aug 13 18:52:58 UTC 2025","","test_airports_count","",""
 "
 This test verifies that the SauceDemo inventory page correctly displays
 exactly 6 products after a successful user login. This is a critical
@@ -136,7 +143,7 @@ Expected Result:
 - Login is successful and redirects to inventory page
 - Inventory page displays exactly 6 product items
 - All items have proper product information
-","2506","Verify inventory displays exactly 6 items after login","tests.ui","Wed Aug 13 18:49:23 UTC 2025","passed","Wed Aug 13 18:49:26 UTC 2025","","test_inventory_list_count","",""
+","2053","Verify inventory displays exactly 6 items after login","tests.ui","Wed Aug 13 18:52:41 UTC 2025","passed","Wed Aug 13 18:52:43 UTC 2025","","test_inventory_list_count","",""
 "
 This test verifies that adding the first inventory item to the shopping cart
 correctly updates the cart badge to display ""1"", indicating one item in cart.
@@ -154,63 +161,56 @@ Expected Result:
 - ""Add to cart"" button changes to ""Remove""
 - Shopping cart badge appears with count ""1""
 - Cart icon is highlighted/updated to show active state
-","6861","Verify adding first item to cart updates badge to '1'","tests.ui","Wed Aug 13 18:49:06 UTC 2025","passed","Wed Aug 13 18:49:13 UTC 2025","","test_add_first_item_to_cart","",""
-"
-This test verifies that the SauceDemo inventory page correctly displays
-exactly 6 products after a successful user login. This is a critical
-validation of the core inventory display functionality.
-
-Steps:
-1. Navigate to SauceDemo login page
-2. Login with standard user credentials
-3. Wait for inventory page to load
-4. Count the number of inventory items displayed
-5. Verify exactly 6 items are present
-
-Expected Result:
-- Login is successful and redirects to inventory page
-- Inventory page displays exactly 6 product items
-- All items have proper product information
-","2304","Verify inventory displays exactly 6 items after login","tests.ui","Wed Aug 13 18:49:24 UTC 2025","passed","Wed Aug 13 18:49:26 UTC 2025","","test_inventory_list_count","",""
+","6496","Verify adding first item to cart updates badge to '1'","tests.ui","Wed Aug 13 18:52:22 UTC 2025","passed","Wed Aug 13 18:52:29 UTC 2025","","test_add_first_item_to_cart","",""
 "
 This test verifies that after adding an item to cart, the item correctly
 appears in the cart page when navigating to the cart.
-","1286","Verify added item appears in cart page","tests.ui","Wed Aug 13 18:49:15 UTC 2025","passed","Wed Aug 13 18:49:16 UTC 2025","","test_add_first_item_to_cart","",""
-"
-This test verifies that the SauceDemo inventory page correctly displays
-exactly 6 products after a successful user login. This is a critical
-validation of the core inventory display functionality.
-
-Steps:
-1. Navigate to SauceDemo login page
-2. Login with standard user credentials
-3. Wait for inventory page to load
-4. Count the number of inventory items displayed
-5. Verify exactly 6 items are present
-
-Expected Result:
-- Login is successful and redirects to inventory page
-- Inventory page displays exactly 6 product items
-- All items have proper product information
-","2453","Verify inventory displays exactly 6 items after login","tests.ui","Wed Aug 13 18:49:07 UTC 2025","passed","Wed Aug 13 18:49:09 UTC 2025","","test_inventory_list_count","",""
-"
-This test verifies that the airport API responds within acceptable
-time limits to ensure good user experience.
-","24","Verify airport API response time performance","tests.api","Wed Aug 13 18:49:03 UTC 2025","passed","Wed Aug 13 18:49:03 UTC 2025","","test_airports_count","",""
-"
-This test verifies that airport name matching is case-sensitive
-and that the exact airport names are returned as expected.
-","26","Verify airport search is case sensitive","tests.api","Wed Aug 13 18:49:03 UTC 2025","passed","Wed Aug 13 18:49:03 UTC 2025","","test_airports_contains","",""
-"
-This test verifies that the cart badge correctly updates when adding
-multiple items to the cart, showing the accurate count.
-","5464","Verify cart badge updates when adding multiple items","tests.ui","Wed Aug 13 18:49:18 UTC 2025","passed","Wed Aug 13 18:49:24 UTC 2025","","test_add_first_item_to_cart","",""
+","1306","Verify added item appears in cart page","tests.ui","Wed Aug 13 18:53:09 UTC 2025","passed","Wed Aug 13 18:53:10 UTC 2025","","test_add_first_item_to_cart","",""
 "
 This test verifies that all inventory items display complete information
 including name, description, price, and image after login.
 
 This is an extended validation that ensures data quality beyond just count.
-","94","Verify inventory items have complete information","tests.ui","Wed Aug 13 18:49:11 UTC 2025","passed","Wed Aug 13 18:49:11 UTC 2025","","test_inventory_list_count","",""
+","0","Verify inventory items have complete information","tests.ui","Wed Aug 13 18:55:49 UTC 2025","broken","Wed Aug 13 18:55:49 UTC 2025","","test_inventory_list_count","",""
+"
+This test verifies that the required airports not only exist but also
+have complete and valid information in their attributes.
+","93","Verify required airports have complete information","tests.api","Wed Aug 13 18:52:57 UTC 2025","passed","Wed Aug 13 18:52:57 UTC 2025","","test_airports_contains","",""
+"
+This test verifies that adding the first inventory item to the shopping cart
+correctly updates the cart badge to display ""1"", indicating one item in cart.
+
+Steps:
+1. Navigate to SauceDemo and complete login
+2. Locate the first product item in the inventory
+3. Click the ""Add to cart"" button for the first item
+4. Verify button text changes to ""Remove""
+5. Check the shopping cart badge in the header
+6. Verify cart badge displays ""1""
+
+Expected Result:
+- First product is successfully added to cart
+- ""Add to cart"" button changes to ""Remove""
+- Shopping cart badge appears with count ""1""
+- Cart icon is highlighted/updated to show active state
+","7002","Verify adding first item to cart updates badge to '1'","tests.ui","Wed Aug 13 18:52:59 UTC 2025","passed","Wed Aug 13 18:53:06 UTC 2025","","test_add_first_item_to_cart","",""
+"
+This test verifies that the SauceDemo inventory page correctly displays
+exactly 6 products after a successful user login. This is a critical
+validation of the core inventory display functionality.
+
+Steps:
+1. Navigate to SauceDemo login page
+2. Login with standard user credentials
+3. Wait for inventory page to load
+4. Count the number of inventory items displayed
+5. Verify exactly 6 items are present
+
+Expected Result:
+- Login is successful and redirects to inventory page
+- Inventory page displays exactly 6 product items
+- All items have proper product information
+","2422","Verify inventory displays exactly 6 items after login","tests.ui","Wed Aug 13 18:55:46 UTC 2025","passed","Wed Aug 13 18:55:49 UTC 2025","","test_inventory_list_count","",""
 "
 This test verifies that the AirportGap API returns exactly 30 airports
 in the response when querying the /api/airports endpoint.
@@ -228,4 +228,4 @@ Expected Result:
 - Response contains valid JSON structure
 - ""data"" array contains exactly 30 airport objects
 - Each airport object has required fields (id, type, attributes)
-","33","Verify AirportGap API returns exactly 30 airports","tests.api","Wed Aug 13 18:49:03 UTC 2025","passed","Wed Aug 13 18:49:03 UTC 2025","","test_airports_count","",""
+","129","Verify AirportGap API returns exactly 30 airports","tests.api","Wed Aug 13 18:52:57 UTC 2025","passed","Wed Aug 13 18:52:57 UTC 2025","","test_airports_count","",""

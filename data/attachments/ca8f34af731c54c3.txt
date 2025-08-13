@@ -1,0 +1,6 @@
+2025-08-13 18:52:38 [    INFO] test_execution [cf482dc6]: Starting test: tests/api/test_distance_kix_nrt.py::test_distance_between_kix_and_nrt_exceeds_400km (setup)
+2025-08-13 18:52:38 [    INFO] src.api.airports_client.AirportsClient [cf482dc6]: Calculating distance from KIX to NRT
+2025-08-13 18:52:38 [    INFO] src.api.airports_client.AirportsClient [cf482dc6]: Making POST request to https://airportgap.com/api/airports/distance
+2025-08-13 18:52:38 [    INFO] src.api.airports_client.AirportsClient [cf482dc6]: Request completed: POST https://airportgap.com/api/airports/distance
+2025-08-13 18:52:38 [    INFO] src.api.airports_client.AirportsClient [cf482dc6]: Distance calculation successful: 490.81 km (304.76 miles, 264.83 nm)
+2025-08-13 18:52:38 [    INFO] test_execution [cf482dc6]: Test completed: tests/api/test_distance_kix_nrt.py::test_distance_between_kix_and_nrt_exceeds_400km (setup) (duration: 0.03s)

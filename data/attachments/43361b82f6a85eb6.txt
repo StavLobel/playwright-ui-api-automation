@@ -1,0 +1,2 @@
+INFO     test_execution:conftest.py:240 Starting test: tests/ui/test_add_first_item_to_cart.py::test_cart_badge_updates_with_multiple_items[webkit] (setup)
+INFO     test_execution:conftest.py:251 Test completed: tests/ui/test_add_first_item_to_cart.py::test_cart_badge_updates_with_multiple_items[webkit] (setup) (duration: 60.35s)

@@ -1,0 +1,17 @@
+2025-08-13 18:54:46 [    INFO] test_execution [ad78b858]: Starting test: tests/ui/test_add_first_item_to_cart.py::test_cart_badge_updates_with_multiple_items[webkit] (setup)
+2025-08-13 18:54:46 [    INFO] src.pages.login_page.LoginPage [ad78b858]: Starting step: Navigate to SauceDemo login page
+2025-08-13 18:54:46 [    INFO] src.pages.login_page.LoginPage [ad78b858]: Navigating to URL: https://www.saucedemo.com
+2025-08-13 18:55:16 [   ERROR] src.pages.login_page.LoginPage [ad78b858]: Navigation failed to https://www.saucedemo.com: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.saucedemo.com/", waiting until "load"
+
+2025-08-13 18:55:46 [   ERROR] src.pages.login_page.LoginPage [ad78b858]: Failed to take screenshot: Page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - taking page screenshot
+  - waiting for fonts to load...
+
+2025-08-13 18:55:46 [   ERROR] src.pages.login_page.LoginPage [ad78b858]: Step failed: Navigate to SauceDemo login page - Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.saucedemo.com/", waiting until "load"
+
+2025-08-13 18:55:46 [    INFO] test_execution [ad78b858]: Test completed: tests/ui/test_add_first_item_to_cart.py::test_cart_badge_updates_with_multiple_items[webkit] (setup) (duration: 60.35s)

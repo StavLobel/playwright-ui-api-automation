@@ -1,0 +1,6 @@
+{
+  "response_time_ms": 90.80147743225098,
+  "max_allowed_ms": 3000,
+  "airports_count": 30,
+  "performance_acceptable": true
+}

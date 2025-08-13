@@ -1,0 +1,20 @@
+2025-08-13 18:52:57 [    INFO] test_execution [f9abb029]: Starting test: tests/api/test_airports_count.py::test_airport_count_consistency_across_requests (setup)
+2025-08-13 18:52:57 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Getting airports count
+2025-08-13 18:52:57 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Fetching all airports from AirportGap API
+2025-08-13 18:52:57 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Making GET request to https://airportgap.com/api/airports
+2025-08-13 18:52:58 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Request completed: GET https://airportgap.com/api/airports
+2025-08-13 18:52:58 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Successfully retrieved 30 airports
+2025-08-13 18:52:58 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Total airports count: 30
+2025-08-13 18:52:58 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Getting airports count
+2025-08-13 18:52:58 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Fetching all airports from AirportGap API
+2025-08-13 18:52:58 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Making GET request to https://airportgap.com/api/airports
+2025-08-13 18:52:58 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Request completed: GET https://airportgap.com/api/airports
+2025-08-13 18:52:58 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Successfully retrieved 30 airports
+2025-08-13 18:52:58 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Total airports count: 30
+2025-08-13 18:52:58 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Getting airports count
+2025-08-13 18:52:58 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Fetching all airports from AirportGap API
+2025-08-13 18:52:58 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Making GET request to https://airportgap.com/api/airports
+2025-08-13 18:52:58 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Request completed: GET https://airportgap.com/api/airports
+2025-08-13 18:52:58 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Successfully retrieved 30 airports
+2025-08-13 18:52:58 [    INFO] src.api.airports_client.AirportsClient [f9abb029]: Total airports count: 30
+2025-08-13 18:52:58 [    INFO] test_execution [f9abb029]: Test completed: tests/api/test_airports_count.py::test_airport_count_consistency_across_requests (setup) (duration: 0.27s)

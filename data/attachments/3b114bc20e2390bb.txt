@@ -1,0 +1,17 @@
+2025-08-13 18:52:41 [    INFO] test_execution [92b90aff]: Starting test: tests/ui/test_inventory_list_count.py::test_inventory_displays_exactly_six_items[chromium] (setup)
+2025-08-13 18:52:41 [    INFO] src.pages.login_page.LoginPage [92b90aff]: Starting step: Navigate to SauceDemo login page
+2025-08-13 18:52:41 [    INFO] src.pages.login_page.LoginPage [92b90aff]: Navigating to URL: https://www.saucedemo.com
+2025-08-13 18:52:41 [    INFO] browser.console [unknown]: [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+2025-08-13 18:52:41 [    INFO] browser.console [unknown]: [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+2025-08-13 18:52:41 [    INFO] browser.console [unknown]: [log] Content is cached for offline use.
+2025-08-13 18:52:42 [    INFO] src.pages.login_page.LoginPage [92b90aff]: Navigation completed in 0.68s
+2025-08-13 18:52:42 [    INFO] src.pages.login_page.LoginPage [92b90aff]: Login page loaded successfully
+2025-08-13 18:52:42 [    INFO] src.pages.login_page.LoginPage [92b90aff]: Step completed: Navigate to SauceDemo login page
+2025-08-13 18:52:42 [    INFO] src.pages.login_page.LoginPage [92b90aff]: Verifying login page is loaded
+2025-08-13 18:52:42 [    INFO] src.pages.login_page.LoginPage [92b90aff]: Login page verification successful
+2025-08-13 18:52:42 [    INFO] src.pages.login_page.LoginPage [92b90aff]: Starting login process for user: standard_user
+2025-08-13 18:52:43 [    INFO] src.pages.login_page.LoginPage [92b90aff]: Login successful for user: standard_user
+2025-08-13 18:52:43 [    INFO] src.pages.inventory_page.InventoryPage [92b90aff]: Verifying inventory page is loaded
+2025-08-13 18:52:43 [    INFO] src.pages.inventory_page.InventoryPage [92b90aff]: Inventory page verification successful
+2025-08-13 18:52:43 [    INFO] src.pages.inventory_page.InventoryPage [92b90aff]: Found 6 inventory items
+2025-08-13 18:52:43 [    INFO] test_execution [92b90aff]: Test completed: tests/ui/test_inventory_list_count.py::test_inventory_displays_exactly_six_items[chromium] (setup) (duration: 2.12s)

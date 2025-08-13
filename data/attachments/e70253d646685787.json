@@ -1,0 +1,45 @@
+{
+  "case_variations_tested": {
+    "Akureyri Airport": {
+      "original": "Akureyri Airport",
+      "lowercase": "akureyri airport",
+      "uppercase": "AKUREYRI AIRPORT",
+      "title_case": "Akureyri Airport"
+    },
+    "St. Anthony Airport": {
+      "original": "St. Anthony Airport",
+      "lowercase": "st. anthony airport",
+      "uppercase": "ST. ANTHONY AIRPORT",
+      "title_case": "St. Anthony Airport"
+    },
+    "CFB Bagotville": {
+      "original": "CFB Bagotville",
+      "lowercase": "cfb bagotville",
+      "uppercase": "CFB BAGOTVILLE",
+      "title_case": "Cfb Bagotville"
+    }
+  },
+  "case_test_results": [
+    {
+      "airport": "Akureyri Airport",
+      "exact_match": true,
+      "lowercase_match": false,
+      "uppercase_match": false,
+      "title_case_match": true
+    },
+    {
+      "airport": "St. Anthony Airport",
+      "exact_match": true,
+      "lowercase_match": false,
+      "uppercase_match": false,
+      "title_case_match": true
+    },
+    {
+      "airport": "CFB Bagotville",
+      "exact_match": true,
+      "lowercase_match": false,
+      "uppercase_match": false,
+      "title_case_match": false
+    }
+  ]
+}

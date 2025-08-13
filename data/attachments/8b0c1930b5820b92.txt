@@ -1,0 +1,20 @@
+2025-08-13 18:54:09 [    INFO] test_execution [a10b9317]: Starting test: tests/ui/test_add_first_item_to_cart.py::test_added_item_appears_in_cart_page[webkit] (setup)
+2025-08-13 18:54:09 [    INFO] src.pages.login_page.LoginPage [a10b9317]: Starting step: Navigate to SauceDemo login page
+2025-08-13 18:54:09 [    INFO] src.pages.login_page.LoginPage [a10b9317]: Navigating to URL: https://www.saucedemo.com
+2025-08-13 18:54:10 [    INFO] browser.console [unknown]: [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+2025-08-13 18:54:10 [    INFO] browser.console [unknown]: [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+2025-08-13 18:54:20 [    INFO] browser.console [unknown]: [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+2025-08-13 18:54:20 [    INFO] browser.console [unknown]: [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+2025-08-13 18:54:39 [   ERROR] src.pages.login_page.LoginPage [a10b9317]: Navigation failed to https://www.saucedemo.com: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.saucedemo.com/", waiting until "load"
+
+2025-08-13 18:54:40 [    INFO] browser.console [unknown]: [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+2025-08-13 18:54:40 [    INFO] browser.console [unknown]: [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+2025-08-13 18:54:45 [    INFO] src.pages.login_page.LoginPage [a10b9317]: Screenshot saved: screenshots/a10b9317_navigation_failed_1755111279.png
+2025-08-13 18:54:45 [   ERROR] src.pages.login_page.LoginPage [a10b9317]: Step failed: Navigate to SauceDemo login page - Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.saucedemo.com/", waiting until "load"
+
+2025-08-13 18:54:46 [    INFO] browser.console [unknown]: [log] Content is cached for offline use.
+2025-08-13 18:54:46 [    INFO] test_execution [a10b9317]: Test completed: tests/ui/test_add_first_item_to_cart.py::test_added_item_appears_in_cart_page[webkit] (setup) (duration: 36.41s)

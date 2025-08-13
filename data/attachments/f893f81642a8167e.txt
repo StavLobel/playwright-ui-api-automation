@@ -1,0 +1,13 @@
+INFO     test_execution:conftest.py:240 Starting test: tests/ui/test_add_first_item_to_cart.py::test_add_first_item_to_cart_updates_badge[webkit] (setup)
+INFO     browser.console:conftest.py:121 [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+INFO     browser.console:conftest.py:121 [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+INFO     browser.console:conftest.py:121 [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+INFO     browser.console:conftest.py:121 [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+INFO     browser.console:conftest.py:121 [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+INFO     browser.console:conftest.py:121 [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+ERROR    root:conftest.py:148 Failed to take final screenshot: Page.screenshot: Timeout 30000ms exceeded.
+Call log:
+  - taking page screenshot
+  - waiting for fonts to load...
+
+INFO     test_execution:conftest.py:251 Test completed: tests/ui/test_add_first_item_to_cart.py::test_add_first_item_to_cart_updates_badge[webkit] (setup) (duration: 90.65s)
