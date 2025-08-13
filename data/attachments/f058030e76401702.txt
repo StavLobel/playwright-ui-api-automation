@@ -1,0 +1,2 @@
+[32mINFO    [0m test_execution:conftest.py:240 Starting test: tests/api/test_distance_kix_nrt.py::test_distance_api_handles_invalid_airport_codes (setup)
+[32mINFO    [0m test_execution:conftest.py:251 Test completed: tests/api/test_distance_kix_nrt.py::test_distance_api_handles_invalid_airport_codes (setup) (duration: 0.17s)

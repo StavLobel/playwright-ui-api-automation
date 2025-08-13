@@ -1,0 +1,24 @@
+2025-08-13 18:48:55 [    INFO] test_execution [878e45e2]: Starting test: tests/ui/test_add_first_item_to_cart.py::test_added_item_appears_in_cart_page[chromium] (setup)
+2025-08-13 18:48:55 [    INFO] src.pages.login_page.LoginPage [878e45e2]: Starting step: Navigate to SauceDemo login page
+2025-08-13 18:48:55 [    INFO] src.pages.login_page.LoginPage [878e45e2]: Navigating to URL: https://www.saucedemo.com
+2025-08-13 18:48:56 [    INFO] browser.console [unknown]: [log] Content is cached for offline use.
+2025-08-13 18:48:56 [    INFO] browser.console [unknown]: [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+2025-08-13 18:48:56 [    INFO] browser.console [unknown]: [error] Access to fetch at 'https://events.backtrace.io/api/unique-events/submit?universe=UNIVERSE&token=TOKEN' from origin 'https://www.saucedemo.com' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.
+2025-08-13 18:48:56 [    INFO] browser.console [unknown]: [error] Failed to load resource: net::ERR_FAILED
+2025-08-13 18:48:56 [    INFO] src.pages.login_page.LoginPage [878e45e2]: Navigation completed in 1.09s
+2025-08-13 18:48:57 [    INFO] src.pages.login_page.LoginPage [878e45e2]: Login page loaded successfully
+2025-08-13 18:48:57 [    INFO] src.pages.login_page.LoginPage [878e45e2]: Step completed: Navigate to SauceDemo login page
+2025-08-13 18:48:57 [    INFO] src.pages.login_page.LoginPage [878e45e2]: Starting login process for user: standard_user
+2025-08-13 18:48:58 [    INFO] src.pages.login_page.LoginPage [878e45e2]: Login successful for user: standard_user
+2025-08-13 18:48:58 [    INFO] src.pages.inventory_page.InventoryPage [878e45e2]: Verifying inventory page is loaded
+2025-08-13 18:48:58 [    INFO] src.pages.inventory_page.InventoryPage [878e45e2]: Inventory page verification successful
+2025-08-13 18:48:58 [    INFO] src.pages.inventory_page.InventoryPage [878e45e2]: Adding first inventory item to cart
+2025-08-13 18:48:59 [    INFO] src.pages.inventory_page.InventoryPage [878e45e2]: Successfully added 'Sauce Labs Backpack' to cart
+2025-08-13 18:48:59 [    INFO] src.pages.inventory_page.InventoryPage [878e45e2]: Clicking shopping cart link
+2025-08-13 18:48:59 [    INFO] src.pages.inventory_page.InventoryPage [878e45e2]: Successfully navigated to cart page
+2025-08-13 18:48:59 [    INFO] src.pages.cart_page.CartPage [878e45e2]: Verifying cart page is loaded
+2025-08-13 18:48:59 [    INFO] src.pages.cart_page.CartPage [878e45e2]: Cart page verification successful
+2025-08-13 18:48:59 [    INFO] src.pages.cart_page.CartPage [878e45e2]: Found 1 items in cart
+2025-08-13 18:48:59 [    INFO] src.pages.cart_page.CartPage [878e45e2]: Found 1 items in cart
+2025-08-13 18:48:59 [    INFO] src.pages.cart_page.CartPage [878e45e2]: Found 1 items in cart
+2025-08-13 18:48:59 [    INFO] test_execution [878e45e2]: Test completed: tests/ui/test_add_first_item_to_cart.py::test_added_item_appears_in_cart_page[chromium] (setup) (duration: 3.52s)

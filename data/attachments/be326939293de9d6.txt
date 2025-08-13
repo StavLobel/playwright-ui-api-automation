@@ -1,0 +1,2 @@
+INFO     test_execution:conftest.py:240 Starting test: tests/api/test_airports_contains.py::test_airport_names_case_sensitivity (setup)
+INFO     test_execution:conftest.py:251 Test completed: tests/api/test_airports_contains.py::test_airport_names_case_sensitivity (setup) (duration: 0.08s)

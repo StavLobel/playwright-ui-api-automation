@@ -1,0 +1,15 @@
+2025-08-13 18:49:03 [    INFO] test_execution [f21e3636]: Starting test: tests/ui/test_add_first_item_to_cart.py::test_add_first_item_to_cart_updates_badge[firefox] (setup)
+2025-08-13 18:49:04 [    INFO] src.utils.data_loader [unknown]: Successfully loaded YAML data: users.yaml
+2025-08-13 18:49:04 [    INFO] src.pages.login_page.LoginPage [f21e3636]: Starting step: Navigate to SauceDemo login page
+2025-08-13 18:49:04 [    INFO] src.pages.login_page.LoginPage [f21e3636]: Navigating to URL: https://www.saucedemo.com
+2025-08-13 18:49:05 [    INFO] browser.console [unknown]: [log] Content is cached for offline use.
+2025-08-13 18:49:06 [    INFO] src.pages.login_page.LoginPage [f21e3636]: Navigation completed in 1.50s
+2025-08-13 18:49:06 [    INFO] src.pages.login_page.LoginPage [f21e3636]: Login page loaded successfully
+2025-08-13 18:49:06 [    INFO] src.pages.login_page.LoginPage [f21e3636]: Step completed: Navigate to SauceDemo login page
+2025-08-13 18:49:06 [    INFO] src.pages.login_page.LoginPage [f21e3636]: Starting login process for user: standard_user
+2025-08-13 18:49:07 [    INFO] src.pages.login_page.LoginPage [f21e3636]: Login successful for user: standard_user
+2025-08-13 18:49:07 [    INFO] src.pages.inventory_page.InventoryPage [f21e3636]: Verifying inventory page is loaded
+2025-08-13 18:49:07 [    INFO] src.pages.inventory_page.InventoryPage [f21e3636]: Inventory page verification successful
+2025-08-13 18:49:10 [    INFO] src.pages.inventory_page.InventoryPage [f21e3636]: Adding first inventory item to cart
+2025-08-13 18:49:11 [    INFO] src.pages.inventory_page.InventoryPage [f21e3636]: Successfully added 'Sauce Labs Backpack' to cart
+2025-08-13 18:49:11 [    INFO] test_execution [f21e3636]: Test completed: tests/ui/test_add_first_item_to_cart.py::test_add_first_item_to_cart_updates_badge[firefox] (setup) (duration: 7.77s)
