@@ -1,0 +1,2 @@
+INFO     test_execution:conftest.py:240 Starting test: tests/api/test_distance_kix_nrt.py::test_distance_calculation_is_bidirectional (setup)
+INFO     test_execution:conftest.py:251 Test completed: tests/api/test_distance_kix_nrt.py::test_distance_calculation_is_bidirectional (setup) (duration: 0.06s)

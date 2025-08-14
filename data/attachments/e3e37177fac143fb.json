@@ -1,0 +1,14 @@
+{
+  "verification_results": {
+    "Akureyri Airport": true,
+    "St. Anthony Airport": true,
+    "CFB Bagotville": true
+  },
+  "found_airports": [
+    "Akureyri Airport",
+    "St. Anthony Airport",
+    "CFB Bagotville"
+  ],
+  "missing_airports": [],
+  "success_rate": "3/3"
+}
