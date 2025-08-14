@@ -1,5 +1,5 @@
-# Test Report
-Generated: Thu Aug 14 09:04:20 UTC 2025
-Commit: 9296723ac74fd469d8a5143714d7fcc3813151c5
+# Smoke Test Report
+Generated: Thu Aug 14 09:13:25 UTC 2025
+Commit: c59ae4040334e20e74981a543b86fb73ed9af6d9
 Branch: main
-Run: 11
+Run: 5
