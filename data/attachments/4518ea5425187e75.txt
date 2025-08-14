@@ -1,0 +1,2 @@
+INFO     test_execution:conftest.py:240 Starting test: tests/api/test_airports_count.py::test_airports_api_returns_exactly_thirty_airports (setup)
+INFO     test_execution:conftest.py:251 Test completed: tests/api/test_airports_count.py::test_airports_api_returns_exactly_thirty_airports (setup) (duration: 0.09s)
