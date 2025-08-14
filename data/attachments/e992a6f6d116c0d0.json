@@ -1,0 +1,9 @@
+{
+  "airports_checked": 5,
+  "structure_validation": "PASS",
+  "required_fields": [
+    "id",
+    "type",
+    "attributes"
+  ]
+}

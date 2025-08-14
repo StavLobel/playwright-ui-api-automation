@@ -1,0 +1,3 @@
+DEBUG    asyncio:selector_events.py:54 Using selector: EpollSelector
+INFO     test_execution:conftest.py:240 Starting test: tests/api/test_airports_contains.py::test_api_contains_required_airports (setup)
+INFO     test_execution:conftest.py:251 Test completed: tests/api/test_airports_contains.py::test_api_contains_required_airports (setup) (duration: 0.19s)

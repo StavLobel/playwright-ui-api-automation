@@ -1,0 +1,19 @@
+2025-08-14 06:56:29 [    INFO] test_execution [368bcc33]: Starting test: tests/ui/test_add_first_item_to_cart.py::test_add_first_item_to_cart[chromium] (setup)
+2025-08-14 06:56:29 [    INFO] src.utils.data_loader [unknown]: Successfully loaded YAML data: users.yaml
+2025-08-14 06:56:29 [    INFO] src.pages.login_page.LoginPage [368bcc33]: Starting step: Navigate to SauceDemo login page
+2025-08-14 06:56:29 [    INFO] src.pages.login_page.LoginPage [368bcc33]: Navigating to URL: https://www.saucedemo.com
+2025-08-14 06:56:30 [    INFO] browser.console [unknown]: [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+2025-08-14 06:56:30 [    INFO] browser.console [unknown]: [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+2025-08-14 06:56:30 [    INFO] browser.console [unknown]: [log] Content is cached for offline use.
+2025-08-14 06:56:30 [    INFO] src.pages.login_page.LoginPage [368bcc33]: Navigation completed in 0.88s
+2025-08-14 06:56:30 [    INFO] src.pages.login_page.LoginPage [368bcc33]: Login page loaded successfully
+2025-08-14 06:56:30 [    INFO] src.pages.login_page.LoginPage [368bcc33]: Step completed: Navigate to SauceDemo login page
+2025-08-14 06:56:30 [    INFO] src.pages.login_page.LoginPage [368bcc33]: Verifying login page is loaded
+2025-08-14 06:56:30 [    INFO] src.pages.login_page.LoginPage [368bcc33]: Login page verification successful
+2025-08-14 06:56:30 [    INFO] src.pages.login_page.LoginPage [368bcc33]: Starting login process for user: standard_user
+2025-08-14 06:56:31 [    INFO] src.pages.login_page.LoginPage [368bcc33]: Login successful for user: standard_user
+2025-08-14 06:56:31 [    INFO] src.pages.inventory_page.InventoryPage [368bcc33]: Verifying inventory page is loaded
+2025-08-14 06:56:31 [    INFO] src.pages.inventory_page.InventoryPage [368bcc33]: Inventory page verification successful
+2025-08-14 06:56:35 [    INFO] src.pages.inventory_page.InventoryPage [368bcc33]: Adding first inventory item to cart
+2025-08-14 06:56:36 [    INFO] src.pages.inventory_page.InventoryPage [368bcc33]: Successfully added 'Sauce Labs Backpack' to cart
+2025-08-14 06:56:36 [    INFO] test_execution [368bcc33]: Test completed: tests/ui/test_add_first_item_to_cart.py::test_add_first_item_to_cart[chromium] (setup) (duration: 6.63s)

@@ -1,0 +1,2 @@
+INFO     test_execution:conftest.py:240 Starting test: tests/api/test_distance_kix_nrt.py::test_distance_between_kix_and_nrt_exceeds_400km (setup)
+INFO     test_execution:conftest.py:251 Test completed: tests/api/test_distance_kix_nrt.py::test_distance_between_kix_and_nrt_exceeds_400km (setup) (duration: 0.02s)
