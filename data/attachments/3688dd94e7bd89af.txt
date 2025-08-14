@@ -1,0 +1,7 @@
+2025-08-14 06:57:39 [    INFO] test_execution [4314a54a]: Starting test: tests/api/test_distance_kix_nrt.py::test_distance_api_handles_invalid_airport_codes (setup)
+2025-08-14 06:57:39 [    INFO] src.api.airports_client.AirportsClient [4314a54a]: Calculating distance from XXX to KIX
+2025-08-14 06:57:39 [    INFO] src.api.airports_client.AirportsClient [4314a54a]: Making POST request to https://airportgap.com/api/airports/distance
+2025-08-14 06:57:39 [    INFO] src.api.airports_client.AirportsClient [4314a54a]: Request completed: POST https://airportgap.com/api/airports/distance
+2025-08-14 06:57:39 [   ERROR] src.api.airports_client.AirportsClient [4314a54a]: Expected status code 200, got 422. Response: {'errors': [{'status': '422', 'title': 'Unable to process request', 'detail': "Please enter valid 'from' and 'to' airports."}]}
+2025-08-14 06:57:39 [   ERROR] src.api.airports_client.AirportsClient [4314a54a]: Failed to calculate distance: Expected status code 200, got 422. Response: {'errors': [{'status': '422', 'title': 'Unable to process request', 'detail': "Please enter valid 'from' and 'to' airports."}]}
+2025-08-14 06:57:39 [    INFO] test_execution [4314a54a]: Test completed: tests/api/test_distance_kix_nrt.py::test_distance_api_handles_invalid_airport_codes (setup) (duration: 0.03s)
