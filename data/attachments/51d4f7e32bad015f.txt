@@ -1,0 +1,13 @@
+2025-08-14 09:02:07 [    INFO] test_execution [352dbbd2]: Starting test: tests/ui/test_inventory_list_count.py::test_inventory_items_have_complete_information[firefox] (setup)
+2025-08-14 09:02:07 [    INFO] src.pages.login_page.LoginPage [352dbbd2]: Starting step: Navigate to SauceDemo login page
+2025-08-14 09:02:07 [    INFO] src.pages.login_page.LoginPage [352dbbd2]: Navigating to URL: https://www.saucedemo.com
+2025-08-14 09:02:08 [    INFO] browser.console [unknown]: [log] Content is cached for offline use.
+2025-08-14 09:02:08 [    INFO] src.pages.login_page.LoginPage [352dbbd2]: Navigation completed in 1.00s
+2025-08-14 09:02:08 [    INFO] src.pages.login_page.LoginPage [352dbbd2]: Login page loaded successfully
+2025-08-14 09:02:08 [    INFO] src.pages.login_page.LoginPage [352dbbd2]: Step completed: Navigate to SauceDemo login page
+2025-08-14 09:02:08 [    INFO] src.pages.login_page.LoginPage [352dbbd2]: Starting login process for user: standard_user
+2025-08-14 09:02:10 [    INFO] src.pages.login_page.LoginPage [352dbbd2]: Login successful for user: standard_user
+2025-08-14 09:02:10 [    INFO] src.pages.inventory_page.InventoryPage [352dbbd2]: Verifying inventory page is loaded
+2025-08-14 09:02:10 [    INFO] src.pages.inventory_page.InventoryPage [352dbbd2]: Inventory page verification successful
+2025-08-14 09:02:10 [    INFO] src.pages.inventory_page.InventoryPage [352dbbd2]: Found 6 inventory items
+2025-08-14 09:02:10 [    INFO] test_execution [352dbbd2]: Test completed: tests/ui/test_inventory_list_count.py::test_inventory_items_have_complete_information[firefox] (setup) (duration: 2.59s)

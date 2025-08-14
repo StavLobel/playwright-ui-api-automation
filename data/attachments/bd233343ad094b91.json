@@ -1,0 +1,1 @@
+{'from_airport': 'NRT', 'to_airport': 'KIX', 'kilometers': 490.8053652969214, 'miles': 304.76001022047103, 'nautical_miles': 264.82908133654655, 'request_payload': {'from': 'NRT', 'to': 'KIX'}, 'response_time_ms': 11.94906234741211}

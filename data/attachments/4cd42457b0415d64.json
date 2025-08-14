@@ -1,0 +1,5 @@
+{
+  "performance_note": "Response time measurement not implemented in current client",
+  "max_acceptable_time_ms": 2000,
+  "performance_status": "INFO"
+}

@@ -1,0 +1,2 @@
+INFO     test_execution:conftest.py:240 Starting test: tests/api/test_airports_contains.py::test_required_airports_have_complete_information (setup)
+INFO     test_execution:conftest.py:251 Test completed: tests/api/test_airports_contains.py::test_required_airports_have_complete_information (setup) (duration: 0.10s)

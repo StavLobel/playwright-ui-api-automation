@@ -1,0 +1,10 @@
+2025-08-14 09:01:56 [    INFO] test_execution [1815a754]: Starting test: tests/api/test_distance_kix_nrt.py::test_distance_calculation_is_bidirectional (setup)
+2025-08-14 09:01:56 [    INFO] src.api.airports_client.AirportsClient [1815a754]: Calculating distance from KIX to NRT
+2025-08-14 09:01:56 [    INFO] src.api.airports_client.AirportsClient [1815a754]: Making POST request to https://airportgap.com/api/airports/distance
+2025-08-14 09:01:56 [    INFO] src.api.airports_client.AirportsClient [1815a754]: Request completed: POST https://airportgap.com/api/airports/distance
+2025-08-14 09:01:56 [    INFO] src.api.airports_client.AirportsClient [1815a754]: Distance calculation successful: 490.81 km (304.76 miles, 264.83 nm)
+2025-08-14 09:01:56 [    INFO] src.api.airports_client.AirportsClient [1815a754]: Calculating distance from NRT to KIX
+2025-08-14 09:01:56 [    INFO] src.api.airports_client.AirportsClient [1815a754]: Making POST request to https://airportgap.com/api/airports/distance
+2025-08-14 09:01:56 [    INFO] src.api.airports_client.AirportsClient [1815a754]: Request completed: POST https://airportgap.com/api/airports/distance
+2025-08-14 09:01:56 [    INFO] src.api.airports_client.AirportsClient [1815a754]: Distance calculation successful: 490.81 km (304.76 miles, 264.83 nm)
+2025-08-14 09:01:56 [    INFO] test_execution [1815a754]: Test completed: tests/api/test_distance_kix_nrt.py::test_distance_calculation_is_bidirectional (setup) (duration: 0.03s)
