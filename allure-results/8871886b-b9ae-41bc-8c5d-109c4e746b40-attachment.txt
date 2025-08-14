@@ -1,2 +1,0 @@
-[32mINFO    [0m test_execution:conftest.py:240 Starting test: tests/api/test_airports_count.py::test_airports_api_response_time_performance (setup)
-[32mINFO    [0m test_execution:conftest.py:251 Test completed: tests/api/test_airports_count.py::test_airports_api_response_time_performance (setup) (duration: 0.17s)

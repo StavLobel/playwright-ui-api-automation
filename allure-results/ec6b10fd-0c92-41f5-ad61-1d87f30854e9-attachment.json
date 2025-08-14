@@ -1,8 +1,0 @@
-{
-  "scenario": "invalid_from_airport",
-  "from_code": "XXX",
-  "to_code": "KIX",
-  "error_type": "AssertionError",
-  "error_message": "Expected status code 200, got 422. Response: {'errors': [{'status': '422', 'title': 'Unable to process request', 'detail': \"Please enter valid 'from' and 'to' airports.\"}]}",
-  "handled_correctly": true
-}

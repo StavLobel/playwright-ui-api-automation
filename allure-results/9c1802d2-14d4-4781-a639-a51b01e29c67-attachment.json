@@ -1,7 +1,0 @@
-{
-  "from_airport": "KIX",
-  "to_airport": "NRT",
-  "min_expected_distance_km": 400.0,
-  "max_expected_distance_km": 2000.0,
-  "test_description": "Distance between major Japanese airports"
-}

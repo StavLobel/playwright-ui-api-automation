@@ -1,3 +1,0 @@
-[35mDEBUG   [0m asyncio:selector_events.py:64 Using selector: KqueueSelector
-[32mINFO    [0m test_execution:conftest.py:240 Starting test: tests/api/test_airports_contains.py::test_api_contains_required_airports (setup)
-[32mINFO    [0m test_execution:conftest.py:251 Test completed: tests/api/test_airports_contains.py::test_api_contains_required_airports (setup) (duration: 0.67s)
