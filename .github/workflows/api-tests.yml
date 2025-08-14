@@ -108,7 +108,7 @@ jobs:
 
       - name: Notify API Test Results
         uses: actions/github-script@v7
-        if: always()
+        if: always() && github.event_name == 'pull_request'
         with:
           script: |
             const { data: jobs } = await github.rest.actions.listJobsForWorkflowRun({
@@ -140,6 +140,6 @@ jobs:
             github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: context.issue?.number || 0,
+              issue_number: context.issue.number,
               body: summary
             });

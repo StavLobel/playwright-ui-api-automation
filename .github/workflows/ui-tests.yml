@@ -116,6 +116,20 @@ jobs:
     if: always()
 
     steps:
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+
+      - name: Install Allure CLI
+        run: npm install -g allure-commandline
+
       - name: Download all UI test results
         uses: actions/download-artifact@v4
         with:
@@ -152,7 +166,7 @@ jobs:
 
       - name: Notify UI Test Results
         uses: actions/github-script@v7
-        if: always()
+        if: always() && github.event_name == 'pull_request'
         with:
           script: |
             const { data: jobs } = await github.rest.actions.listJobsForWorkflowRun({
@@ -184,6 +198,6 @@ jobs:
             github.rest.issues.createComment({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              issue_number: context.issue?.number || 0,
+              issue_number: context.issue.number,
               body: summary
             });
