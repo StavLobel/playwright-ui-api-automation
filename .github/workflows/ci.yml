@@ -73,22 +73,37 @@ jobs:
           make type
         shell: bash
 
-      - name: Run Tests (${{ matrix.browser }})
+      - name: Run UI Tests (${{ matrix.browser }})
         run: |
-          python -m pytest tests/ --browser=${{ matrix.browser }} --alluredir=allure-results-${{ matrix.browser }}
+          python -m pytest tests/ui/ -m ui --browser=${{ matrix.browser }} --alluredir=allure-results-ui-${{ matrix.browser }}
         env:
           # Set environment variables for test execution
           SAUCEDEMO_BASE_URL: "https://www.saucedemo.com"
-          AIRPORTGAP_BASE_URL: "https://airportgap.com"
           BROWSER_HEADLESS: "true"
           TEST_TIMEOUT: "30000"
 
-      - name: Upload Test Results
+      - name: Run API Tests
+        run: |
+          python -m pytest tests/api/ -m api --alluredir=allure-results-api-${{ matrix.browser }}
+        env:
+          # Set environment variables for test execution
+          AIRPORTGAP_BASE_URL: "https://airportgap.com"
+          TEST_TIMEOUT: "30000"
+
+      - name: Upload UI Test Results
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: allure-results-${{ matrix.browser }}
-          path: allure-results-${{ matrix.browser }}/
+          name: allure-results-ui-${{ matrix.browser }}
+          path: allure-results-ui-${{ matrix.browser }}/
+          retention-days: 30
+
+      - name: Upload API Test Results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-results-api-${{ matrix.browser }}
+          path: allure-results-api-${{ matrix.browser }}/
           retention-days: 30
 
       - name: Upload Screenshots on Failure
@@ -132,7 +147,12 @@ jobs:
       - name: Merge Allure Results
         run: |
           mkdir -p allure-results
-          find artifacts/ -name "allure-results-*" -type d | while read dir; do
+          # Merge UI test results from all browsers
+          find artifacts/ -name "allure-results-ui-*" -type d | while read dir; do
+            cp -r "$dir"/* allure-results/ 2>/dev/null || true
+          done
+          # Merge API test results from all browsers (API tests are same across browsers)
+          find artifacts/ -name "allure-results-api-*" -type d | head -1 | while read dir; do
             cp -r "$dir"/* allure-results/ 2>/dev/null || true
           done
 
@@ -158,11 +178,12 @@ jobs:
 
       - name: Add Allure Report Metadata
         run: |
-          echo "# Test Report" > allure-report/README.md
+          echo "# Comprehensive Test Report" > allure-report/README.md
           echo "Generated: $(date)" >> allure-report/README.md
           echo "Commit: ${{ github.sha }}" >> allure-report/README.md
           echo "Branch: ${{ github.ref_name }}" >> allure-report/README.md
           echo "Run: ${{ github.run_number }}" >> allure-report/README.md
+          echo "Coverage: UI Tests (Chromium, Firefox, WebKit) + API Tests" >> allure-report/README.md
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -188,15 +209,19 @@ jobs:
                 issue_number: context.issue.number,
                 owner: context.repo.owner,
                 repo: context.repo.repo,
-                body: `## 📋 Test Report
+                body: `## 📋 Comprehensive Test Report
 
-                ✅ Test execution completed!
+                ✅ Full test execution completed!
 
                 📊 **Allure Report**: Will be available at https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/ after merge to main
 
                 🔗 **Artifacts**: Check the Actions tab for detailed test results and screenshots
 
                 🚀 **Commit**: ${{ github.sha }}
+
+                🧪 **Coverage**:
+                - UI Tests across Chromium, Firefox, WebKit
+                - API Tests for all endpoints
                 `
               });
             }
@@ -210,15 +235,16 @@ jobs:
     steps:
       - name: Test Results Summary
         run: |
-          echo "## 📊 Test Execution Summary" >> $GITHUB_STEP_SUMMARY
+          echo "## 📊 Comprehensive Test Execution Summary" >> $GITHUB_STEP_SUMMARY
           echo "- **Tests Status**: ${{ needs.test.result }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Report Status**: ${{ needs.report.result }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Branch**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
           echo "- **Run Number**: ${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Coverage**: UI Tests (3 browsers) + API Tests" >> $GITHUB_STEP_SUMMARY
 
           if [[ "${{ needs.test.result }}" == "success" ]]; then
-            echo "✅ **All tests passed successfully!**" >> $GITHUB_STEP_SUMMARY
+            echo "✅ **All UI and API tests passed successfully across all browsers!**" >> $GITHUB_STEP_SUMMARY
           else
             echo "❌ **Some tests failed. Check the artifacts for details.**" >> $GITHUB_STEP_SUMMARY
           fi
@@ -233,11 +259,12 @@ jobs:
         with:
           status: failure
           text: |
-            🚨 Test Pipeline Failed
+            🚨 Comprehensive Test Pipeline Failed
             Repository: ${{ github.repository }}
             Branch: ${{ github.ref_name }}
             Commit: ${{ github.sha }}
             Run: ${{ github.run_number }}
+            Coverage: UI Tests (3 browsers) + API Tests
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         continue-on-error: true

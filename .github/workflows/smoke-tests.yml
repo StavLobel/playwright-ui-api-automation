@@ -36,123 +36,225 @@ permissions:
   id-token: write
 
 jobs:
-  smoke-tests:
-    name: Smoke Tests
+  test:
+    name: Smoke Test Suite
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Python ${{ env.PYTHON_VERSION }}
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: ${{ env.PYTHON_VERSION }}
 
-      - name: Set up Node.js ${{ env.NODE_VERSION }}
+      - name: Set up Node.js (for Allure CLI)
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - name: Set up Java
+      - name: Set up Java (for Allure Reports)
         uses: actions/setup-java@v4
         with:
-          distribution: 'zulu'
+          distribution: 'temurin'
           java-version: '11'
 
-      - name: Install Python dependencies
+      - name: Cache Python Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install Python Dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Install Playwright browsers
+      - name: Install Playwright Browsers
         run: |
-          playwright install --with-deps
-          playwright install chromium
+          playwright install --with-deps chromium
 
       - name: Install Allure CLI
-        run: npm install -g allure-commandline
+        run: |
+          npm install -g allure-commandline --save-dev
+
+      - name: Run Code Quality Checks
+        run: |
+          make fmt
+          make lint
+          make type
+        shell: bash
 
       - name: Run Smoke Tests
         run: |
-          python -m pytest tests/ -m smoke --browser chromium --alluredir=allure-results-smoke --html=smoke-test-report.html --self-contained-html
+          python -m pytest tests/ -m smoke --browser=chromium --alluredir=allure-results
+        env:
+          # Set environment variables for test execution
+          SAUCEDEMO_BASE_URL: "https://www.saucedemo.com"
+          AIRPORTGAP_BASE_URL: "https://airportgap.com"
+          BROWSER_HEADLESS: "true"
+          TEST_TIMEOUT: "30000"
 
-      - name: Upload Smoke test results
+      - name: Upload Test Results
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: smoke-test-results
-          path: |
-            allure-results-smoke/
-            smoke-test-report.html
+          name: allure-results-smoke
+          path: allure-results/
+          retention-days: 30
+
+      - name: Upload Screenshots on Failure
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: screenshots-smoke
+          path: screenshots/
+          retention-days: 7
+
+  report:
+    name: Generate & Publish Report
+    runs-on: ubuntu-latest
+    needs: test
+    if: always()
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java (for Allure Reports)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - name: Set up Node.js (for Allure CLI)
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install Allure CLI
+        run: |
+          npm install -g allure-commandline --save-dev
+
+      - name: Download All Test Results
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+
+      - name: Merge Allure Results
+        run: |
+          mkdir -p allure-results
+          find artifacts/ -name "allure-results-*" -type d | while read dir; do
+            cp -r "$dir"/* allure-results/ 2>/dev/null || true
+          done
+
+      - name: Download Previous Allure History
+        uses: actions/checkout@v4
+        if: github.ref == 'refs/heads/main'
+        with:
+          ref: gh-pages
+          path: gh-pages
+        continue-on-error: true
+
+      - name: Copy Allure History
+        if: github.ref == 'refs/heads/main'
+        run: |
+          if [ -d "gh-pages/history" ]; then
+            cp -r gh-pages/history allure-results/history
+          fi
+        continue-on-error: true
 
       - name: Generate Allure Report
-        if: always()
         run: |
-          allure generate allure-results-smoke -o allure-report-smoke --clean
+          allure generate allure-results -o allure-report --clean
 
-      - name: Upload Allure Report
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: allure-report-smoke
-          path: allure-report-smoke/
-
-      - name: Generate & Publish Report
+      - name: Add Allure Report Metadata
         run: |
-          # Generate Allure report
-          allure generate allure-results-smoke -o allure-report-smoke --clean
-
-          # Create summary report
-          echo "## Smoke Test Report Summary" > smoke-test-summary.md
-          echo "Generated on: $(date)" >> smoke-test-summary.md
-          echo "Test Results: allure-results-smoke/" >> smoke-test-summary.md
-          echo "Report Location: allure-report-smoke/" >> smoke-test-summary.md
+          echo "# Smoke Test Report" > allure-report/README.md
+          echo "Generated: $(date)" >> allure-report/README.md
+          echo "Commit: ${{ github.sha }}" >> allure-report/README.md
+          echo "Branch: ${{ github.ref_name }}" >> allure-report/README.md
+          echo "Run: ${{ github.run_number }}" >> allure-report/README.md
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: allure-report-smoke
+          publish_dir: allure-report
           keep_files: true
-          force_orphan: false
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Deploy Smoke Test Allure report for ${{ github.sha }}'
 
-      - name: Notify Results
+      - name: Add PR Comment with Report Link
         uses: actions/github-script@v7
-        if: always() && github.event_name == 'pull_request'
+        if: github.event_name == 'pull_request'
         with:
           script: |
-            const { data: jobs } = await github.rest.actions.listJobsForWorkflowRun({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              run_id: context.runId
-            });
+            const fs = require('fs');
+            const reportPath = 'allure-report/index.html';
 
-            const smokeTestJob = jobs.jobs.find(job => job.name === 'Smoke Tests');
-            const status = smokeTestJob?.conclusion === 'success' ? '✅' : '❌';
+            if (fs.existsSync(reportPath)) {
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: `## 📋 Smoke Test Report
 
-            const summary = `## Smoke Test Execution Summary
+                ✅ Smoke test execution completed!
 
-            **Status**: ${status} ${smokeTestJob?.conclusion === 'success' ? 'All smoke tests passed' : 'Some smoke tests failed'}
+                📊 **Allure Report**: Will be available at https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/ after merge to main
 
-            **Test Suite**: Critical functionality validation
-            **Environment**: Python ${{ env.PYTHON_VERSION }}, Chromium browser
+                🔗 **Artifacts**: Check the Actions tab for detailed test results and screenshots
 
-            **Results**:
-            - Allure Report: https://${context.repo.owner}.github.io/${context.repo.repo}/
-            - Test Artifacts: Available in workflow artifacts
+                🚀 **Commit**: ${{ github.sha }}
 
-            **Coverage**:
-            - Critical UI flows (login, inventory, cart)
-            - Essential API endpoints (airports, basic validation)
-            - Framework stability verification
+                🎯 **Purpose**: Critical functionality validation before full test suites
+                `
+              });
+            }
 
-            **Purpose**: Quick validation of core functionality before running full test suites`;
+  notification:
+    name: Notify Results
+    runs-on: ubuntu-latest
+    needs: [test, report]
+    if: always()
 
-            github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body: summary
-            });
+    steps:
+      - name: Test Results Summary
+        run: |
+          echo "## 📊 Smoke Test Execution Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Tests Status**: ${{ needs.test.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Report Status**: ${{ needs.report.result }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Branch**: ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Run Number**: ${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
+
+          if [[ "${{ needs.test.result }}" == "success" ]]; then
+            echo "✅ **All smoke tests passed successfully!**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "❌ **Some smoke tests failed. Check the artifacts for details.**" >> $GITHUB_STEP_SUMMARY
+          fi
+
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "📊 **Allure Report**: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Slack Notification (on failure)
+        if: failure() && github.ref == 'refs/heads/main'
+        uses: 8398a7/action-slack@v3
+        with:
+          status: failure
+          text: |
+            🚨 Smoke Test Pipeline Failed
+            Repository: ${{ github.repository }}
+            Branch: ${{ github.ref_name }}
+            Commit: ${{ github.sha }}
+            Run: ${{ github.run_number }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        continue-on-error: true
