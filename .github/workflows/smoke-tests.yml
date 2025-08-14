@@ -98,6 +98,17 @@ jobs:
           name: allure-report-smoke
           path: allure-report-smoke/
 
+      - name: Generate & Publish Report
+        run: |
+          # Generate Allure report
+          allure generate allure-results-smoke -o allure-report-smoke --clean
+
+          # Create summary report
+          echo "## Smoke Test Report Summary" > smoke-test-summary.md
+          echo "Generated on: $(date)" >> smoke-test-summary.md
+          echo "Test Results: allure-results-smoke/" >> smoke-test-summary.md
+          echo "Report Location: allure-report-smoke/" >> smoke-test-summary.md
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
@@ -107,7 +118,7 @@ jobs:
           keep_files: true
           force_orphan: false
 
-      - name: Notify Smoke Test Results
+      - name: Notify Results
         uses: actions/github-script@v7
         if: always() && github.event_name == 'pull_request'
         with:

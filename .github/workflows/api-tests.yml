@@ -97,6 +97,17 @@ jobs:
           name: allure-report-api
           path: allure-report-api/
 
+      - name: Generate & Publish Report
+        run: |
+          # Generate Allure report
+          allure generate allure-results-api -o allure-report-api --clean
+
+          # Create summary report
+          echo "## API Test Report Summary" > api-test-summary.md
+          echo "Generated on: $(date)" >> api-test-summary.md
+          echo "Test Results: allure-results-api/" >> api-test-summary.md
+          echo "Report Location: allure-report-api/" >> api-test-summary.md
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: github.ref == 'refs/heads/main'
@@ -106,7 +117,7 @@ jobs:
           keep_files: true
           force_orphan: false
 
-      - name: Notify API Test Results
+      - name: Notify Results
         uses: actions/github-script@v7
         if: always() && github.event_name == 'pull_request'
         with:
