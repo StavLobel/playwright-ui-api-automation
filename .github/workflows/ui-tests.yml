@@ -1,0 +1,189 @@
+name: UI Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths:
+      - 'src/pages/**'
+      - 'tests/ui/**'
+      - '.github/workflows/ui-tests.yml'
+  pull_request:
+    branches: [ main, develop ]
+    paths:
+      - 'src/pages/**'
+      - 'tests/ui/**'
+      - '.github/workflows/ui-tests.yml'
+  workflow_dispatch:
+    inputs:
+      browser:
+        description: 'Browser to test'
+        required: false
+        default: 'chromium'
+        type: choice
+        options:
+          - chromium
+          - firefox
+          - webkit
+          - all
+
+env:
+  PYTHON_VERSION: '3.11'
+  NODE_VERSION: '18'
+  # Ensure GITHUB_TOKEN has write permissions for Pages deployment
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  ui-tests:
+    name: UI Tests (${{ matrix.browser }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        browser: ${{ fromJson('["chromium", "firefox", "webkit"]') }}
+        include:
+          - browser: chromium
+            browser_name: Chromium
+          - browser: firefox
+            browser_name: Firefox
+          - browser: webkit
+            browser_name: WebKit
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install Playwright browsers
+        run: |
+          playwright install --with-deps
+          playwright install ${{ matrix.browser }}
+
+      - name: Install Allure CLI
+        run: npm install -g allure-commandline
+
+      - name: Run UI Tests
+        run: |
+          python -m pytest tests/ui/ -m ui --browser ${{ matrix.browser }} --alluredir=allure-results-${{ matrix.browser }} --html=ui-test-report-${{ matrix.browser }}.html --self-contained-html
+
+      - name: Upload UI test results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ui-test-results-${{ matrix.browser }}
+          path: |
+            allure-results-${{ matrix.browser }}/
+            ui-test-report-${{ matrix.browser }}.html
+
+      - name: Generate Allure Report
+        if: always()
+        run: |
+          allure generate allure-results-${{ matrix.browser }} -o allure-report-${{ matrix.browser }} --clean
+
+      - name: Upload Allure Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: allure-report-${{ matrix.browser }}
+          path: allure-report-${{ matrix.browser }}/
+
+  ui-test-summary:
+    name: UI Test Summary
+    runs-on: ubuntu-latest
+    needs: ui-tests
+    if: always()
+
+    steps:
+      - name: Download all UI test results
+        uses: actions/download-artifact@v4
+        with:
+          pattern: ui-test-results-*
+
+      - name: Download all Allure reports
+        uses: actions/download-artifact@v4
+        with:
+          pattern: allure-report-*
+
+      - name: Generate Combined Allure Report
+        run: |
+          # Create combined results directory
+          mkdir -p combined-allure-results
+
+          # Copy results from all browsers
+          for dir in allure-results-*; do
+            if [ -d "$dir" ]; then
+              cp -r "$dir"/* combined-allure-results/ || true
+            fi
+          done
+
+          # Generate combined report
+          allure generate combined-allure-results -o combined-allure-report --clean
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: combined-allure-report
+          keep_files: true
+          force_orphan: false
+
+      - name: Notify UI Test Results
+        uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            const { data: jobs } = await github.rest.actions.listJobsForWorkflowRun({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              run_id: context.runId
+            });
+
+            const uiTestJobs = jobs.jobs.filter(job => job.name.includes('UI Tests'));
+            const failedJobs = uiTestJobs.filter(job => job.conclusion === 'failure');
+            const successJobs = uiTestJobs.filter(job => job.conclusion === 'success');
+
+            const summary = `## UI Test Execution Summary
+
+            **Status**: ${failedJobs.length > 0 ? '❌ Some failures' : '✅ All passed'}
+            **Browser Results**:
+            ${uiTestJobs.map(job => {
+              const browser = job.name.match(/UI Tests \((.+)\)/)?.[1] || 'Unknown';
+              const status = job.conclusion === 'success' ? '✅' : '❌';
+              return `- ${status} ${browser}`;
+            }).join('\n')}
+
+            **Total Jobs**: ${uiTestJobs.length}
+            **Successful**: ${successJobs.length}
+            **Failed**: ${failedJobs.length}
+
+            **Allure Report**: https://${context.repo.owner}.github.io/${context.repo.repo}/`;
+
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue?.number || 0,
+              body: summary
+            });
