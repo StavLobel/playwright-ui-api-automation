@@ -1,0 +1,17 @@
+2025-08-14 09:13:19 [    INFO] test_execution [626ab835]: Starting test: tests/ui/test_add_first_item_to_cart.py::test_add_first_item_to_cart[firefox] (setup)
+2025-08-14 09:13:20 [    INFO] src.utils.data_loader [unknown]: Successfully loaded YAML data: users.yaml
+2025-08-14 09:13:20 [    INFO] src.pages.login_page.LoginPage [626ab835]: Starting step: Navigate to SauceDemo login page
+2025-08-14 09:13:20 [    INFO] src.pages.login_page.LoginPage [626ab835]: Navigating to URL: https://www.saucedemo.com
+2025-08-14 09:13:20 [    INFO] browser.console [unknown]: [log] Content is cached for offline use.
+2025-08-14 09:13:21 [    INFO] src.pages.login_page.LoginPage [626ab835]: Navigation completed in 1.12s
+2025-08-14 09:13:21 [    INFO] src.pages.login_page.LoginPage [626ab835]: Login page loaded successfully
+2025-08-14 09:13:21 [    INFO] src.pages.login_page.LoginPage [626ab835]: Step completed: Navigate to SauceDemo login page
+2025-08-14 09:13:21 [    INFO] src.pages.login_page.LoginPage [626ab835]: Verifying login page is loaded
+2025-08-14 09:13:21 [    INFO] src.pages.login_page.LoginPage [626ab835]: Login page verification successful
+2025-08-14 09:13:21 [    INFO] src.pages.login_page.LoginPage [626ab835]: Starting login process for user: standard_user
+2025-08-14 09:13:22 [    INFO] src.pages.login_page.LoginPage [626ab835]: Login successful for user: standard_user
+2025-08-14 09:13:22 [    INFO] src.pages.inventory_page.InventoryPage [626ab835]: Verifying inventory page is loaded
+2025-08-14 09:13:22 [    INFO] src.pages.inventory_page.InventoryPage [626ab835]: Inventory page verification successful
+2025-08-14 09:13:25 [    INFO] src.pages.inventory_page.InventoryPage [626ab835]: Adding first inventory item to cart
+2025-08-14 09:13:26 [    INFO] src.pages.inventory_page.InventoryPage [626ab835]: Successfully added 'Sauce Labs Backpack' to cart
+2025-08-14 09:13:26 [    INFO] test_execution [626ab835]: Test completed: tests/ui/test_add_first_item_to_cart.py::test_add_first_item_to_cart[firefox] (setup) (duration: 7.48s)
