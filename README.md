@@ -1,5 +1,6 @@
-# API Test Report
-Generated: Thu Aug 14 09:14:20 UTC 2025
+# Comprehensive Test Report
+Generated: Thu Aug 14 09:14:24 UTC 2025
 Commit: c59ae4040334e20e74981a543b86fb73ed9af6d9
 Branch: main
-Run: 5
+Run: 12
+Coverage: UI Tests (Chromium, Firefox, WebKit) + API Tests

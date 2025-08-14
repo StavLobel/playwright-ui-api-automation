@@ -1,0 +1,6 @@
+2025-08-14 09:13:39 [    INFO] test_execution [60416b5e]: Starting test: tests/api/test_airports_count.py::test_airports_api_returns_exactly_thirty_airports (setup)
+2025-08-14 09:13:39 [    INFO] src.api.airports_client.AirportsClient [60416b5e]: Fetching all airports from AirportGap API
+2025-08-14 09:13:39 [    INFO] src.api.airports_client.AirportsClient [60416b5e]: Making GET request to https://airportgap.com/api/airports
+2025-08-14 09:13:39 [    INFO] src.api.airports_client.AirportsClient [60416b5e]: Request completed: GET https://airportgap.com/api/airports
+2025-08-14 09:13:39 [    INFO] src.api.airports_client.AirportsClient [60416b5e]: Successfully retrieved 30 airports
+2025-08-14 09:13:39 [    INFO] test_execution [60416b5e]: Test completed: tests/api/test_airports_count.py::test_airports_api_returns_exactly_thirty_airports (setup) (duration: 0.03s)

@@ -1,0 +1,7 @@
+2025-08-14 09:13:39 [    INFO] test_execution [1ff53fe9]: Starting test: tests/api/test_airports_contains.py::test_api_contains_required_airports (setup)
+2025-08-14 09:13:39 [    INFO] src.utils.data_loader [unknown]: Successfully loaded YAML data: api_expected.yaml
+2025-08-14 09:13:39 [    INFO] src.api.airports_client.AirportsClient [1ff53fe9]: Fetching all airports from AirportGap API
+2025-08-14 09:13:39 [    INFO] src.api.airports_client.AirportsClient [1ff53fe9]: Making GET request to https://airportgap.com/api/airports
+2025-08-14 09:13:39 [    INFO] src.api.airports_client.AirportsClient [1ff53fe9]: Request completed: GET https://airportgap.com/api/airports
+2025-08-14 09:13:39 [    INFO] src.api.airports_client.AirportsClient [1ff53fe9]: Successfully retrieved 30 airports
+2025-08-14 09:13:39 [    INFO] test_execution [1ff53fe9]: Test completed: tests/api/test_airports_contains.py::test_api_contains_required_airports (setup) (duration: 0.16s)

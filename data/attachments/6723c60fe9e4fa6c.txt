@@ -1,0 +1,15 @@
+2025-08-14 09:13:54 [    INFO] test_execution [fdf80f89]: Starting test: tests/ui/test_inventory_list_count.py::test_inventory_items_have_complete_information[webkit] (setup)
+2025-08-14 09:13:54 [    INFO] src.pages.login_page.LoginPage [fdf80f89]: Starting step: Navigate to SauceDemo login page
+2025-08-14 09:13:54 [    INFO] src.pages.login_page.LoginPage [fdf80f89]: Navigating to URL: https://www.saucedemo.com
+2025-08-14 09:13:54 [    INFO] browser.console [unknown]: [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+2025-08-14 09:13:54 [    INFO] browser.console [unknown]: [log] Content is cached for offline use.
+2025-08-14 09:13:55 [    INFO] browser.console [unknown]: [error] Failed to load resource: the server responded with a status of 401 (Unauthorized)
+2025-08-14 09:13:55 [    INFO] src.pages.login_page.LoginPage [fdf80f89]: Navigation completed in 0.80s
+2025-08-14 09:13:55 [    INFO] src.pages.login_page.LoginPage [fdf80f89]: Login page loaded successfully
+2025-08-14 09:13:55 [    INFO] src.pages.login_page.LoginPage [fdf80f89]: Step completed: Navigate to SauceDemo login page
+2025-08-14 09:13:55 [    INFO] src.pages.login_page.LoginPage [fdf80f89]: Starting login process for user: standard_user
+2025-08-14 09:13:56 [    INFO] src.pages.login_page.LoginPage [fdf80f89]: Login successful for user: standard_user
+2025-08-14 09:13:56 [    INFO] src.pages.inventory_page.InventoryPage [fdf80f89]: Verifying inventory page is loaded
+2025-08-14 09:13:56 [    INFO] src.pages.inventory_page.InventoryPage [fdf80f89]: Inventory page verification successful
+2025-08-14 09:13:56 [    INFO] src.pages.inventory_page.InventoryPage [fdf80f89]: Found 6 inventory items
+2025-08-14 09:13:56 [    INFO] test_execution [fdf80f89]: Test completed: tests/ui/test_inventory_list_count.py::test_inventory_items_have_complete_information[webkit] (setup) (duration: 2.29s)
